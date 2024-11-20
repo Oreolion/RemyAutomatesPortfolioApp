@@ -1,5 +1,5 @@
 <template>
-  <section class="py-16 px-4 overflow-hidden">
+  <section class="py-10 px-4 overflow-hidden">
     <div class="max-w-7xl mx-auto">
       <div ref="logoContainer" class="relative">
         <div ref="logoTrack" class="flex items-center space-x-16">
@@ -69,7 +69,7 @@ onMounted(() => {
     animation = gsap.to([logoTrack.value, clone], {
       x: "-100%",
       repeat: -1,
-      duration: 30,
+      duration: 20,
       ease: "linear",
       paused: true,
     });

@@ -36,7 +36,7 @@
       </div>
 
       <!-- Integration Section -->
-      <div class="relative h-[400px] mb-20">
+      <div class="flex flex-col h-[400px] mb-20">
         <h2 class="text-3xl font-bold text-center mb-4">
           Imagine your favorite<br />tools now talk to each other.
         </h2>
@@ -50,7 +50,7 @@
             :key="index"
             :src="logo.src"
             :alt="logo.name"
-            class="absolute w-10 h-10 rounded-lg shadow-lg"
+            class="absolute w-14 h-14 rounded-lg shadow-lg"
             :ref="
               (el) => {
                 if (el) logoRefs[index] = el;
@@ -178,13 +178,14 @@ const logos = [
     name: "TikTok",
     src: "/assets/logos/tiktok-color-icon.svg",
   },
-  { name: 'YouTube', src: '/placeholder.svg?height=40&width=40' },
-  { name: 'LinkedIn', src: '/placeholder.svg?height=40&width=40' },
-  { name: 'Teams', src: '/placeholder.svg?height=40&width=40' },
-  { name: 'Slack', src: '/placeholder.svg?height=40&width=40' },
-  { name: 'Gmail', src: '/placeholder.svg?height=40&width=40' },
-  { name: 'X', src: '/logos/x-share-button-icon.svg?' },
-  // Add more logos as needed
+  { name: 'YouTube', src: '/assets/logos/youtube-logo-icon(1).svg' },
+  { name: 'LinkedIn', src: '/assets/logos/linkedin-app-icon.svg' },
+  { name: 'Teams', src: '/assets/logos/microsoft-teams-icon.svg' },
+  { name: 'Slack', src: '/assets/logos/slack-icon.svg' },
+  { name: 'Gmail', src: '/assets/logos/gmail-icon.svg' },
+  { name: 'X', src: '/assets/logos/x-share-button-icon(1).svg' },
+  { name: 'Facebook', src: '/assets/logos/facebook-square-icon.svg' },
+  { name: 'Airtable', src: '/assets/images/airtable-vector-logo-2022-small.png' },
 ];
 
 const logoRefs = ref<HTMLElement[]>([]);
@@ -203,8 +204,8 @@ onMounted(() => {
   // Animate floating logos
   logoRefs.value.forEach((logo, index) => {
     gsap.to(logo, {
-      x: "random(-100, 100)",
-      y: "random(-50, 50)",
+      x: "random(-200, 200)",
+      y: "random(-70, 70)",
       rotation: "random(-15, 15)",
       duration: "random(2, 4)",
       repeat: -1,
@@ -228,9 +229,8 @@ onMounted(() => {
 }
 
 .floating-logos {
-  position: relative;
-  height: 200px;
-  margin: 2rem 0;
+  height: 300px;
+  margin: 2rem auto;
 }
 
 @media (max-width: 380px) {
