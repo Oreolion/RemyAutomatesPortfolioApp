@@ -6,8 +6,6 @@
       class="pt-20 px-4 overflow-hidden bg-gradient-to-br from-[#E8F3F0] to-white"
     >
       <div class="max-w-7xl mx-auto py-16 md:py-22">
-    
-     
         <div class="-mt-6 flex flex-col gap-12 items-center justify-center">
           <div class="">
             <span
@@ -27,7 +25,10 @@
             Save 10+ hours every week.
           </h1>
 
-          <p ref="subheadline" class="mt-6 max-w-[50rem] text-center mx-auto text-gray-600 text-lg">
+          <p
+            ref="subheadline"
+            class="mt-6 max-w-[50rem] text-center mx-auto text-gray-600 text-lg"
+          >
             Make more money & save your team time by automating 80% of your
             repetitive sales, support, and admin tasks.
           </p>
@@ -55,35 +56,12 @@
     </section>
 
     <!-- Logo Section -->
-    <section class="py-16 px-4">
-      <div class="max-w-7xl mx-auto">
-        <div
-          ref="logoGrid"
-          class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center"
-        >
-          <img
-            src="/assets/images/chatgpt-icon.webp"
-            alt="Claude"
-            class="h-[9rem]"
-          />
-          <img
-            src="/assets/images/9trrmnj2sj8-logo-logo.svg"
-            alt="ElevenLabs"
-            class="h-[9rem]"
-          />
-          <img
-            src="/assets/images/google-gemini-icon.svg"
-            alt="Zapier"
-            class="h-[9rem]"
-          />
-          <img src="/assets/images/zapier_logo.jpg" alt="Zapier" class="h-16" />
-        </div>
-      </div>
-    </section>
+     <LogoSlider />
+
 
     <!-- Stats Section -->
     <section class="py-16 px-4 bg-[#F8FBF9]">
-      <div class="max-w-7xl mx-auto">
+      <div class="max-w-7xl text-center mx-auto">
         <span
           class="inline-flex items-center rounded-full bg-green-500 px-4 py-1 text-sm text-white mb-8"
         >
@@ -92,7 +70,7 @@
 
         <h2
           ref="statsHeadline"
-          class="text-3xl md:text-4xl font-bold max-w-xl leading-tight"
+          class="text-3xl md:text-4xl font-bold mx-auto max-w-3xl leading-tight"
         >
           Every day, we know billions of hours are wasted on busy work.
         </h2>
@@ -138,8 +116,10 @@
     </section>
 
     <!-- Features Section -->
+    <FeaturesSection />
+
     <section class="py-16 px-4">
-      <div class="max-w-7xl mx-auto">
+      <div class="max-w-7xl text-center mx-auto">
         <span
           class="inline-flex items-center rounded-full bg-purple-500 px-4 py-1 text-sm text-white mb-8"
         >
@@ -190,11 +170,10 @@ import {
   BookOpen,
   Users,
   Code,
-  FileText,
-  Repeat,
-  DollarSign,
 } from "lucide-vue-next";
 import LowerLandingpage from "~/components/LowerLandingpage.vue";
+import FeaturesSection from "~/components/FeaturesSection.vue";
+import LogoSlider from "~/components/LogoSlider.vue";
 
 gsap.registerPlugin(ScrollTrigger);
 

@@ -8,8 +8,7 @@ import Navbar from "~/components/Navbar.vue";
     <main>
       <slot />
     </main>
-
-    <footer class="bg-purple-600 rounded-2xl p-8 text-white">
+    <footer class="bg-purple-600 rounded-2xl min-h-[15rem] p-8 mx-4 text-white">
       <div class="flex justify-between items-center">
         <div class="flex gap-4">
           <a href="#" class="opacity-60 hover:opacity-100">X</a>

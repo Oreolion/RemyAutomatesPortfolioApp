@@ -1,7 +1,6 @@
 <template>
   <div class="min-h-screen bg-white">
-    <!-- Hero Section -->
-    <section class="container mx-auto px-4 py-12 md:py-20">
+    <section id="popular-automations" class="container mx-auto px-4 py-12 md:py-20">
       <div class="text-center mb-16">
         <div
           class="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-6"
@@ -67,7 +66,7 @@
       </div>
 
       <!-- CTA Section -->
-      <div class="bg-[#FF4405] rounded-2xl p-8 md:p-12 text-white mb-20">
+      <div id="contact" class="bg-[#FF4405] rounded-2xl p-8 md:p-12 text-white">
         <div class="max-w-2xl mx-auto text-center">
           <h2 class="text-3xl md:text-4xl font-bold mb-4">
             See if Remy is right for you. (It totally is.)
@@ -85,12 +84,11 @@
             Or say hi first: hello@fridayautomation.com
           </div>
         </div>
-        <div class="relative mt-8">
+        <div class="relative mt-8 h-[6rem]">
           <!-- <img src="/placeholder.svg?height=200&width=300" alt="High five illustration" class="mx-auto" /> -->
         </div>
       </div>
     </section>
-    <!-- Footer -->
   </div>
 </template>
 
@@ -178,13 +176,14 @@ const automations = [
 const logos = [
   {
     name: "TikTok",
-    src: "/assets/logos/tiktok-color-icon.svg?height=40&width=40",
+    src: "/assets/logos/tiktok-color-icon.svg",
   },
-  // { name: 'YouTube', src: '/placeholder.svg?height=40&width=40' },
-  // { name: 'LinkedIn', src: '/placeholder.svg?height=40&width=40' },
-  // { name: 'Teams', src: '/placeholder.svg?height=40&width=40' },
-  // { name: 'Slack', src: '/placeholder.svg?height=40&width=40' },
-  // { name: 'Gmail', src: '/placeholder.svg?height=40&width=40' },
+  { name: 'YouTube', src: '/placeholder.svg?height=40&width=40' },
+  { name: 'LinkedIn', src: '/placeholder.svg?height=40&width=40' },
+  { name: 'Teams', src: '/placeholder.svg?height=40&width=40' },
+  { name: 'Slack', src: '/placeholder.svg?height=40&width=40' },
+  { name: 'Gmail', src: '/placeholder.svg?height=40&width=40' },
+  { name: 'X', src: '/logos/x-share-button-icon.svg?' },
   // Add more logos as needed
 ];
 

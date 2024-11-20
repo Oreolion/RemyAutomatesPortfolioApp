@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
   ],
   css: [
-    '@/assets/css/tailwind.css',
+    '@/public/assets/css/tailwind.css',
   ],
   
   // Optional: Customize Tailwind CSS configuration

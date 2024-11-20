@@ -27,17 +27,17 @@
 
       <div class="hidden md:flex items-center gap-6">
         <NuxtLink
-          to="/solutions"
+          to="#solutions"
           class="text-sm text-gray-600 hover:text-gray-900 transition-colors"
           >Solutions</NuxtLink
         >
         <NuxtLink
-          to="/automations"
+          to="#popular-automations"
           class="text-sm text-gray-600 hover:text-gray-900 transition-colors"
           >Popular Automations</NuxtLink
         >
         <NuxtLink
-          to="/contact"
+          to="#contact"
           class="text-sm text-gray-600 hover:text-gray-900 transition-colors"
           >Contact</NuxtLink
         >
@@ -110,17 +110,17 @@
       >
         <div class="px-2 pt-2 pb-3 space-y-1">
           <NuxtLink
-            to="/solutions"
+            to="#solutions"
             class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             >Solutions</NuxtLink
           >
           <NuxtLink
-            to="/automations"
+            to="#popular-automations"
             class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             >Popular Automations</NuxtLink
           >
           <NuxtLink
-            to="/contact"
+            to="#contact"
             class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             >Contact</NuxtLink
           >
