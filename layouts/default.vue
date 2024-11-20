@@ -9,6 +9,18 @@ import Navbar from "~/components/Navbar.vue";
       <slot />
     </main>
 
-    <footer>This is the footer section</footer>
+    <footer class="bg-purple-600 rounded-2xl p-8 text-white">
+      <div class="flex justify-between items-center">
+        <div class="flex gap-4">
+          <a href="#" class="opacity-60 hover:opacity-100">X</a>
+          <a href="#" class="opacity-60 hover:opacity-100">LinkedIn</a>
+          <a href="#" class="opacity-60 hover:opacity-100">Email</a>
+        </div>
+        <!-- <img src="/placeholder.svg?height=40&width=120" alt="Friday Logo" class="h-8" /> -->
+      </div>
+      <div class="mt-8 text-sm opacity-60">
+        © Copyright 2024, All Rights Reserved
+      </div>
+    </footer>
   </div>
 </template>
