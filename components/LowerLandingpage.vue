@@ -6,7 +6,7 @@
     >
       <div class="text-center mb-16">
         <div
-          class="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-6"
+          class="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-base font-bold mb-6"
         >
           Popular Automations
         </div>
@@ -71,7 +71,7 @@
       <!-- CTA Section -->
       <div
         id="contact"
-        class="bg-[#FF4405] rounded-2xl p-8 md:p-12 text-white flex justify-between h-[22rem]"
+        class="bg-[#FF4405] rounded-2xl p-8 md:p-12 text-white flex justify-between h-[26rem] gap-4"
       >
         <div class="h-[14rem] w-[13rem] basis-6/12">
           <img
@@ -82,7 +82,7 @@
         </div>
 
         <div class="max-w-2xl mx-auto basis-6/12">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          <h2 class="text-2xl md:text-4xl font-bold mb-4">
             See if Remy is right for you. (It totally is.)
           </h2>
           <p class="mb-8 opacity-90">

@@ -5,7 +5,7 @@
       <div class="text-center mb-16">
         <div
           ref="badge"
-          class="inline-flex items-center rounded-full bg-[#FF4400] px-6 py-2 text-white text-base font-medium mb-8"
+          class="inline-flex items-center rounded-full bg-[#FF4400] px-6 py-2 text-white text-base font-bold mb-8"
         >
           We're Remy Automates
         </div>

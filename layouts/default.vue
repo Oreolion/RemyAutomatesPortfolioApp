@@ -16,7 +16,7 @@ const openBookingModal = () => {
     <footer
       class="bg-purple-600 rounded-2xl min-h-[18rem] p-8 mx-4 -mt-8 text-white"
     >
-      <div class="flex justify-between mb-6">
+      <div class="flex flex-col justify-between mb-6 md:flex-row">
         <h1 class="text-3xl font-bold mb-4">
           Every day should feel like Friday.
         </h1>
@@ -40,7 +40,7 @@ const openBookingModal = () => {
           </svg>
         </button>
       </div>
-      <div class="flex justify-between items-center">
+      <div class="flex-col gap-4 justify-between max-md:flex-row">
         <div class="flex gap-4 items-center">
           <NuxtLink to="/" class="opacity-60 hover:opacity-100"
             ><NuxtImg
@@ -64,26 +64,9 @@ const openBookingModal = () => {
             ></NuxtImg
           ></NuxtLink>
         </div>
-        <NuxtLink to="/" class="flex items-center gap-2">
-          <svg
-            class="h-8 w-8"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-              fill="#000000"
-            />
-            <path
-              d="M15.5 9L11.5 13L8.5 10"
-              stroke="white"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <span class="font-bold text-2xl font-mono">Remy Automates</span>
+        <NuxtLink to="/" class="flex items-center">
+            <NuxtImg height="23" width="23" src="/assets/logos/raautologo.webp"></NuxtImg>
+            <span class="font-bold text-2xl text-gray-600 font-mono whitespace-nowrap">Remy Automates</span>
         </NuxtLink>
       </div>
       <div class="mt-20 text-sm opacity-60 border-t-2 pt-4">

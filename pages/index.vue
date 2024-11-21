@@ -9,7 +9,7 @@
         <div class="-mt-6 flex flex-col gap-12 items-center justify-center">
           <div class="">
             <span
-              class="flex items-center rounded-full bg-purple-500 px-4 py-2 text-sm text-white"
+              class="flex items-center rounded-full bg-purple-500 px-4 py-2 text-base font-bold text-white"
             >
               Every day should feel like Friday
             </span>
@@ -56,14 +56,13 @@
     </section>
 
     <!-- Logo Section -->
-     <LogoSlider />
-
+    <LogoSlider />
 
     <!-- Stats Section -->
     <section class="py-16 px-4 bg-[#F8FBF9]">
       <div class="max-w-7xl text-center mx-auto">
         <span
-          class="inline-flex items-center rounded-full bg-green-500 px-4 py-1 text-sm text-white mb-8"
+          class="inline-flex items-center rounded-full bg-green-500 px-4 py-1 text-base font-bold text-white mb-8"
         >
           Story time
         </span>
@@ -121,7 +120,7 @@
     <section class="py-16 px-4">
       <div class="max-w-7xl text-center mx-auto">
         <span
-          class="inline-flex items-center rounded-full bg-purple-500 px-4 py-1 text-sm text-white mb-8"
+          class="inline-flex items-center rounded-full bg-purple-500 px-4 py-1 text-base font-bold text-white mb-8"
         >
           Don't let your business fall behind
         </span>

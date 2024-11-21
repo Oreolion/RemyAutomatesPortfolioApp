@@ -52,7 +52,7 @@ const logos = [
     class: "h-21",
   },
   { src: "/assets/images/images.jpeg", alt: "Make", class: "h-16" },
-  { src: "/assets/images/MAIN_Logo_-_Colored_-_Positive.jpg", alt: "Bardeen", class: "h-20" },
+  { src: "/assets/images/MAIN_Logo_-_Colored_-_Positive.jpg", alt: "Bardeen", class: "h-[16rem]" },
 ];
 
 let animation: gsap.core.Tween | null = null;
