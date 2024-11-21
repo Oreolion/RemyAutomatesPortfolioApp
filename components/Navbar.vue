@@ -22,23 +22,23 @@
             stroke-linejoin="round"
           />
         </svg>
-        <span class="font-bold text-xl font-mono">Remy Automates</span>
+        <span class="font-bold text-2xl font-mono">Remy Automates</span>
       </NuxtLink>
 
       <div class="hidden md:flex items-center gap-6">
         <NuxtLink
           to="#solutions"
-          class="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+          class="text-xl font-bold  text-gray-600 hover:text-gray-900 transition-colors"
           >Solutions</NuxtLink
         >
         <NuxtLink
           to="#popular-automations"
-          class="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+          class="text-xl font-bold  text-gray-600 hover:text-gray-900 transition-colors"
           >Popular Automations</NuxtLink
         >
         <NuxtLink
           to="#contact"
-          class="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+          class="text-xl font-bold text-gray-600 hover:text-gray-900 transition-colors"
           >Contact</NuxtLink
         >
       </div>
@@ -46,7 +46,7 @@
       <button
         @click="openBookingModal"
         class="hidden md:flex items-center gap-2 bg-black text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
-      >
+      > <span class="h-3 w-3 bg-green-500 rounded-full"></span>
         Book Call
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -111,22 +111,22 @@
         <div class="px-2 pt-2 pb-3 space-y-1">
           <NuxtLink
             to="#solutions"
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+            class="block px-3 py-2 rounded-md text-xl font-bold  text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             >Solutions</NuxtLink
           >
           <NuxtLink
             to="#popular-automations"
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+            class="block px-3 py-2 rounded-md text-xl font-bold  text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             >Popular Automations</NuxtLink
           >
           <NuxtLink
             to="#contact"
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+            class="block px-3 py-2 rounded-md text-xl font-bold  text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             >Contact</NuxtLink
           >
           <button
             @click="openBookingModal"
-            class="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+            class="w-full text-left block px-3 py-2 rounded-md text-xl font-bold  text-gray-700 hover:text-gray-900 hover:bg-gray-50"
           >
             Book Call
           </button>

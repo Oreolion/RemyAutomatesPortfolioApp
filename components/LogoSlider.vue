@@ -52,6 +52,7 @@ const logos = [
     class: "h-21",
   },
   { src: "/assets/images/images.jpeg", alt: "Make", class: "h-16" },
+  { src: "/assets/images/MAIN_Logo_-_Colored_-_Positive.jpg", alt: "Bardeen", class: "h-20" },
 ];
 
 let animation: gsap.core.Tween | null = null;
@@ -69,7 +70,7 @@ onMounted(() => {
     animation = gsap.to([logoTrack.value, clone], {
       x: "-100%",
       repeat: -1,
-      duration: 20,
+      duration: 8,
       ease: "linear",
       paused: true,
     });

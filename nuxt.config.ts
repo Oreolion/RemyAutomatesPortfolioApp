@@ -1,8 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({ 
-    modules: [
-    '@nuxtjs/tailwindcss',
-  ],
+    modules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
   css: [
     '@/public/assets/css/tailwind.css',
   ],
@@ -21,5 +19,3 @@ export default defineNuxtConfig({
     },
   },
 })
-
-

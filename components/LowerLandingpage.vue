@@ -1,6 +1,9 @@
 <template>
   <div class="min-h-screen bg-white">
-    <section id="popular-automations" class="container mx-auto px-4 py-12 md:py-20">
+    <section
+      id="popular-automations"
+      class="container mx-auto px-4 py-12 md:py-20"
+    >
       <div class="text-center mb-16">
         <div
           class="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-6"
@@ -41,8 +44,8 @@
           Imagine your favorite<br />tools now talk to each other.
         </h2>
         <p class="text-center text-gray-600 mb-8">
-          Yes, we can do that. Connect the tools you use for next level
-          productivity.
+          <strong>Yes, we can do that.</strong> Connect the tools you use for
+          next level productivity.
         </p>
         <div class="floating-logos" ref="logosContainer">
           <img
@@ -66,8 +69,19 @@
       </div>
 
       <!-- CTA Section -->
-      <div id="contact" class="bg-[#FF4405] rounded-2xl p-8 md:p-12 text-white">
-        <div class="max-w-2xl mx-auto text-center">
+      <div
+        id="contact"
+        class="bg-[#FF4405] rounded-2xl p-8 md:p-12 text-white flex justify-between h-[22rem]"
+      >
+        <div class="h-[14rem] w-[13rem] basis-6/12">
+          <img
+            src="/public/assets/images/pixeltrue-contact.png"
+            alt="High five illustration"
+            class="mx-auto"
+          />
+        </div>
+
+        <div class="max-w-2xl mx-auto basis-6/12">
           <h2 class="text-3xl md:text-4xl font-bold mb-4">
             See if Remy is right for you. (It totally is.)
           </h2>
@@ -81,11 +95,8 @@
             • Request a brainstorm →
           </button>
           <div class="mt-4 opacity-80">
-            Or say hi first: hello@fridayautomation.com
+            Or say hi first: hello@remyautomates.com
           </div>
-        </div>
-        <div class="relative mt-8 h-[6rem]">
-          <!-- <img src="/placeholder.svg?height=200&width=300" alt="High five illustration" class="mx-auto" /> -->
         </div>
       </div>
     </section>
@@ -178,14 +189,17 @@ const logos = [
     name: "TikTok",
     src: "/assets/logos/tiktok-color-icon.svg",
   },
-  { name: 'YouTube', src: '/assets/logos/youtube-logo-icon(1).svg' },
-  { name: 'LinkedIn', src: '/assets/logos/linkedin-app-icon.svg' },
-  { name: 'Teams', src: '/assets/logos/microsoft-teams-icon.svg' },
-  { name: 'Slack', src: '/assets/logos/slack-icon.svg' },
-  { name: 'Gmail', src: '/assets/logos/gmail-icon.svg' },
-  { name: 'X', src: '/assets/logos/x-share-button-icon(1).svg' },
-  { name: 'Facebook', src: '/assets/logos/facebook-square-icon.svg' },
-  { name: 'Airtable', src: '/assets/images/airtable-vector-logo-2022-small.png' },
+  { name: "YouTube", src: "/assets/logos/youtube-logo-icon(1).svg" },
+  { name: "LinkedIn", src: "/assets/logos/linkedin-app-icon.svg" },
+  { name: "Teams", src: "/assets/logos/microsoft-teams-icon.svg" },
+  { name: "Slack", src: "/assets/logos/slack-icon.svg" },
+  { name: "Gmail", src: "/assets/logos/gmail-icon.svg" },
+  { name: "X", src: "/assets/logos/x-share-button-icon(1).svg" },
+  { name: "Facebook", src: "/assets/logos/facebook-square-icon.svg" },
+  {
+    name: "Airtable",
+    src: "/assets/images/airtable-vector-logo-2022-small.png",
+  },
 ];
 
 const logoRefs = ref<HTMLElement[]>([]);
@@ -231,6 +245,12 @@ onMounted(() => {
 .floating-logos {
   height: 300px;
   margin: 2rem auto;
+}
+
+#contact img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 @media (max-width: 380px) {
