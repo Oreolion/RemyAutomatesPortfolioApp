@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import Navbar from "~/components/Navbar.vue";
 
-const openBookingModal = () => {
-  // Implement your booking modal logic here
-  alert("Booking modal opened");
-};
 </script>
 
 <template>
@@ -20,8 +16,8 @@ const openBookingModal = () => {
         <h1 class="text-3xl font-bold mb-4">
           Every day should feel like Friday.
         </h1>
-        <button
-          @click="openBookingModal"
+        <NuxtLink
+          to="/form"
           class="hidden md:flex items-center gap-2 bg-black text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
         >
           <span class="h-3 w-3 bg-green-500 rounded-full"></span>
@@ -38,7 +34,7 @@ const openBookingModal = () => {
               clip-rule="evenodd"
             />
           </svg>
-        </button>
+        </NuxtLink>
       </div>
       <div class="flex-col gap-4 justify-between max-md:flex-row">
         <div class="flex gap-4 items-center">

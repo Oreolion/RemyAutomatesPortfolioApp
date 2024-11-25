@@ -33,7 +33,8 @@
             repetitive sales, support, and admin tasks.
           </p>
 
-          <button
+          <NuxtLink
+          to="/form"
             ref="ctaButton"
             class="mt-8 bg-black text-white px-6 py-3 rounded-full text-lg font-medium hover:bg-gray-800 transition-colors inline-flex items-center gap-2"
           >
@@ -50,7 +51,7 @@
                 clip-rule="evenodd"
               />
             </svg>
-          </button>
+          </NuxtLink>
         </div>
       </div>
     </section>
@@ -137,17 +138,17 @@
           class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16"
         >
           <div
-            v-for="(feature, index) in features"
+            v-for="(solution, index) in solutions"
             :key="index"
             class="p-6 rounded-xl border border-gray-200 hover:border-purple-500 transition-colors"
           >
             <div
               class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4"
             >
-              <component :is="feature.icon" class="w-6 h-6 text-purple-600" />
+              <img :src="solution.icon" class="w-9 h-9" />
             </div>
-            <h3 class="text-xl font-semibold mb-2">{{ feature.title }}</h3>
-            <p class="text-gray-600">{{ feature.description }}</p>
+            <h3 class="text-xl font-semibold mb-2">{{ solution.header }}</h3>
+            <p class="text-gray-600">{{ solution.text }}</p>
           </div>
         </div>
       </div>
@@ -162,14 +163,6 @@
 import { ref, onMounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-  ClipboardList,
-  RefreshCw,
-  Zap,
-  BookOpen,
-  Users,
-  Code,
-} from "lucide-vue-next";
 import LowerLandingpage from "~/components/LowerLandingpage.vue";
 import FeaturesSection from "~/components/FeaturesSection.vue";
 import LogoSlider from "~/components/LogoSlider.vue";
@@ -188,42 +181,21 @@ const featuresGrid = ref<HTMLElement>();
 const useCasesHeadline = ref<HTMLElement>();
 const useCasesGrid = ref<HTMLElement>();
 
-const features = [
+const solutions = [
   {
-    title: "Remove manual processes",
-    description:
-      "Cut down on busy work, allowing your team to focus on the tasks that fuel growth.",
-    icon: ClipboardList,
+    header: "Bloated operations and workflow?",
+    text: "Over time your processes grow clunky, inefficient, and error prone.",
+    icon: "",
   },
   {
-    title: "Integrate your apps",
-    description:
-      "Connect and keep in sync, eliminate entry errors, and keep everything in sync automatically.",
-    icon: RefreshCw,
+    header: "Wasting time on repetitive tasks?",
+    text: "Every hour spent on tedious tasks is an hour better spent elsewhere.",
+    icon: "",
   },
   {
-    title: "Agnostic AI",
-    description:
-      "We integrate the latest automated systems that can perform tasks no real one wants while you sleep.",
-    icon: Zap,
-  },
-  {
-    title: "Workshops & Training",
-    description:
-      "Upskill your employees with our AI-powered training programs and workshops.",
-    icon: BookOpen,
-  },
-  {
-    title: "Consulting Automation & AI",
-    description:
-      "Get expert advice on how to implement AI and automation in your specific business context.",
-    icon: Users,
-  },
-  {
-    title: "No-code to custom code",
-    description:
-      "Whether you need simple automations or complex custom solutions, we&apos;ve got you covered.&apos;",
-    icon: Code,
+    header: "Confusion around AI?",
+    text: "There's lots of buzz around AI, but how do you sort through hype vs real value?",
+    icon: "/assets/logos/jUvOkmanrggNmiKSDsqKBn5R6s.avif",
   },
 ];
 

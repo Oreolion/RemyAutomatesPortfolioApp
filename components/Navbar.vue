@@ -26,24 +26,25 @@
         >
       </div>
 
-      <button
-        @click="openBookingModal"
-        class="hidden md:flex items-center gap-2 bg-black text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
-      > <span class="h-3 w-3 bg-green-500 rounded-full"></span>
-        Book Call
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-4 w-4"
-          viewBox="0 0 20 20"
-          fill="currentColor"
+      <Link
+          to="/form"
+          class="hidden md:flex items-center gap-2 bg-black text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
         >
-          <path
-            fill-rule="evenodd"
-            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-            clip-rule="evenodd"
-          />
-        </svg>
-      </button>
+          <span class="h-3 w-3 bg-green-500 rounded-full"></span>
+          Book Call
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </Link>
 
       <button
         @click="toggleMobileMenu"
@@ -107,12 +108,12 @@
             class="block px-3 py-2 rounded-md text-xl font-bold  text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             >Contact</NuxtLink
           >
-          <button
-            @click="openBookingModal"
+          <NuxtLink
+            to="/form"
             class="w-full text-left block px-3 py-2 rounded-md text-xl font-bold  text-gray-700 hover:text-gray-900 hover:bg-gray-50"
           >
             Book Call
-          </button>
+          </NuxtLink>
         </div>
       </div>
     </transition>
@@ -128,8 +129,4 @@ const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
 };
 
-const openBookingModal = () => {
-  // Implement your booking modal logic here
-  alert("Booking modal opened");
-};
 </script>

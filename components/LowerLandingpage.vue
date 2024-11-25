@@ -61,11 +61,11 @@
             "
           />
         </div>
-        <button
+        <div
           class="mx-auto block bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-colors"
         >
           Connect your apps →
-        </button>
+        </div>
       </div>
 
       <!-- CTA Section -->
@@ -89,11 +89,12 @@
             Book a demo call with our team and find out how you & your team can
             share 40 hours of time, forever.
           </p>
-          <button
+          <NuxtLink
+            to="/form"
             class="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-colors"
           >
             • Request a brainstorm →
-          </button>
+          </NuxtLink>
           <div class="mt-4 opacity-80">
             Or say hi first: hello@remyautomates.com
           </div>
