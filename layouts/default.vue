@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Navbar from "~/components/Navbar.vue";
-
 </script>
 
 <template>
@@ -37,7 +36,7 @@ import Navbar from "~/components/Navbar.vue";
         </NuxtLink>
       </div>
       <div class="flex-col gap-4 justify-between max-md:flex-row">
-        <div class="flex gap-4 items-center">
+        <div class="flex gap-4 items-center mb-4">
           <NuxtLink to="/" class="opacity-60 hover:opacity-100"
             ><NuxtImg
               height="25"
@@ -61,8 +60,15 @@ import Navbar from "~/components/Navbar.vue";
           ></NuxtLink>
         </div>
         <NuxtLink to="/" class="flex items-center">
-            <NuxtImg height="23" width="23" src="/assets/logos/raautologo.webp"></NuxtImg>
-            <span class="font-bold text-2xl text-gray-600 font-mono whitespace-nowrap">Remy Automates</span>
+          <NuxtImg
+            height="23"
+            width="23"
+            src="/assets/logos/raautologo.webp"
+          ></NuxtImg>
+          <span
+            class="font-bold text-2xl text-gray-800 font-mono whitespace-nowrap"
+            >Remy Automates</span
+          >
         </NuxtLink>
       </div>
       <div class="mt-20 text-sm opacity-60 border-t-2 pt-4">

@@ -34,7 +34,7 @@
           </p>
 
           <NuxtLink
-          to="/form"
+            to="/form"
             ref="ctaButton"
             class="mt-8 bg-black text-white px-6 py-3 rounded-full text-lg font-medium hover:bg-gray-800 transition-colors inline-flex items-center gap-2"
           >
@@ -145,7 +145,7 @@
             <div
               class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4"
             >
-              <img :src="solution.icon" class="w-9 h-9" />
+              <NuxtImg :src="solution.icon" class="w-9 h-9" />
             </div>
             <h3 class="text-xl font-semibold mb-2">{{ solution.header }}</h3>
             <p class="text-gray-600">{{ solution.text }}</p>
@@ -185,12 +185,12 @@ const solutions = [
   {
     header: "Bloated operations and workflow?",
     text: "Over time your processes grow clunky, inefficient, and error prone.",
-    icon: "",
+    icon: "/assets/images/slow.avif",
   },
   {
     header: "Wasting time on repetitive tasks?",
     text: "Every hour spent on tedious tasks is an hour better spent elsewhere.",
-    icon: "",
+    icon: "/assets/images/task.png",
   },
   {
     header: "Confusion around AI?",

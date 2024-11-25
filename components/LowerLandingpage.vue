@@ -28,10 +28,9 @@
             }
           "
         >
-          <component
-            :is="item.icon"
+          <NuxtImg
+            :src="item.icon"
             class="w-8 h-8 mb-4"
-            :class="item.iconClass"
           />
           <h3 class="font-semibold text-lg mb-2">{{ item.title }}</h3>
           <p class="text-gray-600 text-sm">{{ item.description }}</p>
@@ -124,65 +123,56 @@ const automations = [
     title: "Generate Automatic Reports",
     description:
       "Stop wasting time pulling data from different sources. Let automated reports give you real-time insights without the hassle.",
-    icon: FileText,
-    iconClass: "text-blue-500",
+    icon: '/assets/images/report.avif',
   },
   {
     title: "Sync Data Across Apps",
     description:
       "Keep your data consistent and updated across all your tools by automating data sync. Eliminate the risk of outdated information and manual updates.",
-    icon: RefreshCw,
-    iconClass: "text-purple-500",
+    icon: '/assets/images/sync.avif',
   },
   {
     title: "Sales Pipeline Management",
     description:
       "Keep your deals moving. Automate follow ups and task assignments to make sure no lead slips through the cracks.",
-    icon: DollarSign,
-    iconClass: "text-green-500",
-  },
+      icon: '/assets/logos/pipeline.avif',
+    },
   {
     title: "Support Tickets",
     description:
       "Automatically tag, organize, prioritize, and route support tickets to the right team members, reducing response times & improving satisfaction.",
-    icon: MessageSquare,
-    iconClass: "text-yellow-500",
-  },
+      icon: '/assets/logos/ticket.avif',
+    },
   {
     title: "Invoice & Payments",
     description:
       "No more chasing payments. Automate your invoices and reminders to keep cash flowing in without the time and fuss.",
-    icon: FileSpreadsheet,
-    iconClass: "text-red-500",
-  },
+      icon: '/assets/logos/invoice.avif',
+    },
   {
     title: "Content Scheduling",
     description:
       "Streamline your content with automated posts & engagement. Ensure your brand message is consistently delivered across channels.",
-    icon: Clock,
-    iconClass: "text-indigo-500",
-  },
+      icon: '/assets/logos/schedule.avif',
+    },
   {
     title: "Recurring Task Automation",
     description:
       "Save time on day to day or weekly recurring tasks. Automate the boring admin stuff that steals updates, so your team can focus on stuff that matters.",
-    icon: Users,
-    iconClass: "text-pink-500",
-  },
+      icon: '/assets/logos/recur.avif',
+    },
   {
     title: "Lead Management",
     description:
       "Capture and track leads from all your marketing channels. Never miss out on potential customers without lifting a finger.",
-    icon: Building,
-    iconClass: "text-orange-500",
-  },
+      icon: '/assets/logos/lead.avif',
+    },
   {
     title: "Client/Employee Onboarding",
     description:
       "Make a great first impression. Automate welcome emails, form filling, and document sharing to get new clients or employees up and running smoothly.",
-    icon: UserPlus,
-    iconClass: "text-teal-500",
-  },
+      icon: '/assets/logos/client.avif',
+    },
 ];
 
 const logos = [

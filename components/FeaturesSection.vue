@@ -31,15 +31,14 @@
         ref="grid"
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
       >
-        <!-- Remove manual processes -->
         <div
           class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow"
         >
-          <!-- <img
-            src="/images/relax-illustration.svg"
+          <NuxtImg
+            src="/assets/images/nomanual.avif"
             alt="Person relaxing with laptop"
             class="h-32 w-auto mb-6"
-          /> -->
+          />
           <h3 class="text-2xl font-bold mb-4">Remove manual processes</h3>
           <p class="text-gray-600">
             Cut down on busy work, allowing your team to focus on the tasks that
@@ -51,11 +50,11 @@
         <div
           class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow"
         >
-          <!-- <img
-            src="/images/apps-illustration.svg"
+          <NuxtImg
+            src="/assets/images/integrate.avif"
             alt="Connected app icons"
             class="h-32 w-auto mb-6"
-          /> -->
+          />
           <h3 class="text-2xl font-bold mb-4">Integrate your apps</h3>
           <p class="text-gray-600">
             Connect your tools to avoid double entry, reduce errors, and keep
@@ -67,11 +66,11 @@
         <div
           class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow"
         >
-          <!-- <img
-            src="/images/ai-illustration.svg"
+          <NuxtImg
+            src="/assets/images/agentic.avif"
             alt="AI automation illustration"
             class="h-32 w-auto mb-6"
-          /> -->
+          />
           <h3 class="text-2xl font-bold mb-4">Agentic AI</h3>
           <p class="text-gray-600">
             AI agents are smart, automated systems that can perform tasks on
@@ -83,8 +82,8 @@
         <div
           class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow"
         >
-          <!-- <img src="/images/brain-illustration.svg" 
-          alt="Brain lightbulb illustration" class="h-32 w-auto mb-6" /> -->
+          <NuxtImg src="/assets/images/train.avif" 
+          alt="Brain lightbulb illustration" class="h-32 w-auto mb-6" />
           <h3 class="text-2xl font-bold mb-4">Workshops & Training</h3>
           <p class="text-gray-600">
             Upgrade and empower your team to work smarter with practical
@@ -96,8 +95,8 @@
         <div
           class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow"
         >
-          <!-- <img src="/images/consulting-illustration.svg"  
-          alt="Automation consulting illustration" class="h-32 w-auto mb-6" /> -->
+          <NuxtImg src="/assets/images/consult.avif"  
+          alt="Automation consulting illustration" class="h-32 w-auto mb-6" />
           <h3 class="text-2xl font-bold mb-4">Consulting (Automation & AI)</h3>
           <p class="text-gray-600">
             Get expert advice on how to best use automation & AI to streamline
@@ -109,8 +108,8 @@
         <div
           class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow"
         >
-          <!-- <img src="/images/code-illustration.svg" 
-          alt="Code blocks illustration" class="h-32 w-auto mb-6" /> -->
+          <NuxtImg src="/assets/images/nocode.avif" 
+          alt="Code blocks illustration" class="h-32 w-auto mb-6" />
           <h3 class="text-2xl font-bold mb-4">No-code to custom code</h3>
           <p class="text-gray-600">
             Whether you need simple tools or custom solutions, we tailor our

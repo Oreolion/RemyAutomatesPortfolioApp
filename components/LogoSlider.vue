@@ -28,7 +28,7 @@ const logos = [
   {
     src: "/assets/images/chatgpt-icon.webp",
     alt: "ChatGPT",
-    class: "h-[9rem]",
+    class: "h-[8rem]",
   },
   {
     src: "/assets/images/9trrmnj2sj8-logo-logo.svg",
@@ -38,7 +38,7 @@ const logos = [
   {
     src: "/assets/images/google-gemini-icon.svg",
     alt: "Google Gemini",
-    class: "h-[9rem]",
+    class: "h-[8rem]",
   },
   { src: "/assets/images/zapier_logo.jpg", alt: "Zapier", class: "h-16" },
   {
@@ -52,7 +52,7 @@ const logos = [
     class: "h-21",
   },
   { src: "/assets/images/images.jpeg", alt: "Make", class: "h-16" },
-  { src: "/assets/images/MAIN_Logo_-_Colored_-_Positive.jpg", alt: "Bardeen", class: "h-[16rem]" },
+  { src: "/assets/images/MAIN_Logo_-_Colored_-_Positive.jpg", alt: "Bardeen", class: "h-[14rem]" },
 ];
 
 let animation: gsap.core.Tween | null = null;

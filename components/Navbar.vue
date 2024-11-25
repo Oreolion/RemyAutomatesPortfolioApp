@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 px-4 py-3 border-b border-gray-200"
+    class="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 px-4 py-5 border-b border-gray-200"
   >
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       <NuxtLink to="/" class="flex items-center">
@@ -26,9 +26,9 @@
         >
       </div>
 
-      <Link
+      <NuxtLink
           to="/form"
-          class="hidden md:flex items-center gap-2 bg-black text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
+          class="hidden md:flex items-center gap-2 bg-black text-white px-6 py-5 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
         >
           <span class="h-3 w-3 bg-green-500 rounded-full"></span>
           Book Call
@@ -44,7 +44,7 @@
               clip-rule="evenodd"
             />
           </svg>
-        </Link>
+        </NuxtLink>
 
       <button
         @click="toggleMobileMenu"
