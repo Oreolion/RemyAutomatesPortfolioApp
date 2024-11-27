@@ -1,5 +1,5 @@
 <template>
-<div>
+  <div>
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
@@ -14,6 +14,13 @@ useHead({
       name: "viewport",
       content:
         "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
+    },
+  ],
+  link: [
+    {
+      rel: "icon",
+      type: "image/png",
+      href: "/assets/icon/favicon.ico",
     },
   ],
 });

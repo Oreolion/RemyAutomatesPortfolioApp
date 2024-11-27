@@ -4,12 +4,13 @@ export default defineNuxtConfig({
   css: [
     '@/public/assets/css/tailwind.css',
   ],
-  
-  // Optional: Customize Tailwind CSS configuration
-//   tailwindcss: {
-    // options
-    // e.g., exposeConfig: true,
-//   },
+  app: {
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/icon/favicon.ico' }
+      ]
+    }
+  },
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   postcss: {

@@ -90,7 +90,7 @@
           </p>
           <NuxtLink
             to="/form"
-            class="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-colors"
+            class="bg-black text-white px-6 py-3 whitespace-nowrap rounded-full hover:bg-gray-800 transition-colors"
           >
             • Request a brainstorm →
           </NuxtLink>
