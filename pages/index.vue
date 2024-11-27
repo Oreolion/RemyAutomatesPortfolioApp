@@ -3,8 +3,12 @@
     <!-- Hero Section -->
     <section
       ref="heroSection"
-      class="pt-20 px-4 overflow-hidden bg-gradient-to-br from-[#E8F3F0] to-white"
+      class="relative pt-[7rem] px-4 overflow-hidden bg-gradient-to-br from-[#E8F3F0] to-white"
     >
+    <NuxtImg height="80" width="90" class="absolute top-[41%] left-[20%]" src="/assets/images/scribbles-scribbles-60.svg"></NuxtImg>
+    <NuxtImg height="80" width="80" class="absolute top-[69%] left-[47%]" src="/assets/images/scribbles-scribbles-84.svg"></NuxtImg>
+    <NuxtImg height="100" width="100" class="absolute top-[6rem]" src="/assets/images/scribbles-scribbles-94.svg"></NuxtImg>
+    <NuxtImg height="120" width="120" class="absolute top-[6rem] right-[4%]" src="/assets/images/scribbles-scribbles-49.svg"></NuxtImg>
       <div class="max-w-7xl mx-auto py-16 md:py-22">
         <div class="-mt-6 flex flex-col gap-12 items-center justify-center">
           <div class="">
@@ -60,7 +64,9 @@
     <LogoSlider />
 
     <!-- Stats Section -->
-    <section class="py-16 px-4 bg-[#F8FBF9]">
+    <section class="relative py-16 px-4 bg-[#F8FBF9]">
+        <NuxtImg height="160" width="180" class="absolute right-[35%] top-[6rem]" src="/assets/images/scribbles-scribbles-99.gif"></NuxtImg>
+
       <div class="max-w-7xl text-center mx-auto">
         <span
           class="inline-flex items-center rounded-full bg-green-500 px-4 py-1 text-base font-bold text-white mb-8"
