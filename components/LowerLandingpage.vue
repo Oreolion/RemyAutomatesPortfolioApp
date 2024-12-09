@@ -28,10 +28,7 @@
             }
           "
         >
-          <NuxtImg
-            :src="item.icon"
-            class="w-8 h-8 mb-4"
-          />
+          <NuxtImg :src="item.icon" class="w-8 h-8 mb-4" />
           <h3 class="font-semibold text-lg mb-2">{{ item.title }}</h3>
           <p class="text-gray-600 text-sm">{{ item.description }}</p>
         </div>
@@ -82,7 +79,7 @@
 
         <div class="max-w-2xl mx-auto basis-6/12">
           <h2 class="text-2xl md:text-4xl font-bold mb-4">
-            See if Remy is right for you. (It totally is.)
+            See if Remy is right for you. (He surely is.)
           </h2>
           <p class="mb-8 opacity-90">
             Book a demo call with our team and find out how you & your team can
@@ -92,7 +89,7 @@
             to="/form"
             class="bg-black text-white px-6 py-3 whitespace-nowrap rounded-full hover:bg-gray-800 transition-colors"
           >
-            • Request a brainstorm →
+            Request a brainstorm →
           </NuxtLink>
           <div class="mt-4 opacity-80">
             Or say hi first: hello@remyautomates.com
@@ -123,56 +120,56 @@ const automations = [
     title: "Generate Automatic Reports",
     description:
       "Stop wasting time pulling data from different sources. Let automated reports give you real-time insights without the hassle.",
-    icon: '/assets/images/report.avif',
+    icon: "/assets/images/report.avif",
   },
   {
     title: "Sync Data Across Apps",
     description:
       "Keep your data consistent and updated across all your tools by automating data sync. Eliminate the risk of outdated information and manual updates.",
-    icon: '/assets/images/sync.avif',
+    icon: "/assets/images/sync.avif",
   },
   {
     title: "Sales Pipeline Management",
     description:
       "Keep your deals moving. Automate follow ups and task assignments to make sure no lead slips through the cracks.",
-      icon: '/assets/logos/pipeline.avif',
-    },
+    icon: "/assets/logos/pipeline.avif",
+  },
   {
     title: "Support Tickets",
     description:
       "Automatically tag, organize, prioritize, and route support tickets to the right team members, reducing response times & improving satisfaction.",
-      icon: '/assets/logos/ticket.avif',
-    },
+    icon: "/assets/logos/ticket.avif",
+  },
   {
     title: "Invoice & Payments",
     description:
       "No more chasing payments. Automate your invoices and reminders to keep cash flowing in without the time and fuss.",
-      icon: '/assets/logos/invoice.avif',
-    },
+    icon: "/assets/logos/invoice.avif",
+  },
   {
     title: "Content Scheduling",
     description:
       "Streamline your content with automated posts & engagement. Ensure your brand message is consistently delivered across channels.",
-      icon: '/assets/logos/schedule.avif',
-    },
+    icon: "/assets/logos/schedule.avif",
+  },
   {
     title: "Recurring Task Automation",
     description:
       "Save time on day to day or weekly recurring tasks. Automate the boring admin stuff that steals updates, so your team can focus on stuff that matters.",
-      icon: '/assets/logos/recur.avif',
-    },
+    icon: "/assets/logos/recur.avif",
+  },
   {
     title: "Lead Management",
     description:
       "Capture and track leads from all your marketing channels. Never miss out on potential customers without lifting a finger.",
-      icon: '/assets/logos/lead.avif',
-    },
+    icon: "/assets/logos/lead.avif",
+  },
   {
     title: "Client/Employee Onboarding",
     description:
       "Make a great first impression. Automate welcome emails, form filling, and document sharing to get new clients or employees up and running smoothly.",
-      icon: '/assets/logos/client.avif',
-    },
+    icon: "/assets/logos/client.avif",
+  },
 ];
 
 const logos = [

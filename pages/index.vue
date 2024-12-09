@@ -14,7 +14,7 @@
             <span
               class="flex items-center rounded-full bg-purple-500 px-4 py-2 text-base font-bold text-center text-white"
             >
-              Sit Back, let AI do the tedious and repetitive part of your daily works.
+              Sit Back, let AI do the tedious and repetitive part of your daily tasks.
             </span>
           </div>
         </div>
@@ -41,6 +41,8 @@
             ref="ctaButton"
             class="mt-8 bg-black text-white px-6 py-3 rounded-full text-lg font-medium hover:bg-gray-800 transition-colors inline-flex items-center gap-2"
           >
+          <span class="h-3 w-3 bg-green-500 rounded-full"></span>
+
             Request a brainstorm
             <svg
               xmlns="http://www.w3.org/2000/svg"
