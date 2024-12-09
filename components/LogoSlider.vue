@@ -40,7 +40,7 @@ const logos = [
     alt: "Google Gemini",
     class: "h-[8rem]",
   },
-  { src: "/assets/images/zapier_logo.jpg", alt: "Zapier", class: "h-16" },
+  { src: "/assets/images/Zapier_logo.jpg", alt: "Zapier", class: "h-[8rem]" },
   {
     src: "/assets/images/airtable-vector-logo-2022-small.png",
     alt: "Airtable",
