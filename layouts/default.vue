@@ -72,7 +72,7 @@ import Navbar from "~/components/Navbar.vue";
         </NuxtLink>
       </div>
       <div class="mt-20 text-sm opacity-60 border-t-2 pt-4">
-        © Copyright 2024, All Rights Reserved
+        © Copyright 2025, All Rights Reserved
       </div>
     </footer>
   </div>
