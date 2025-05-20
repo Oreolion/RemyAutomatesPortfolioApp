@@ -5,7 +5,7 @@
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       <NuxtLink to="/" class="flex items-center">
        <NuxtImg height="24" width="24" src="/assets/logos/raautologo.webp"></NuxtImg>
-        <span class="font-bold whitespace-nowrap text-2xl font-mono">Remy Automates</span>
+        <span class="font-bold whitespace-nowrap text-base font-mono">Remy Automates</span>
       </NuxtLink>
 
       <div class="hidden md:flex items-center gap-6">

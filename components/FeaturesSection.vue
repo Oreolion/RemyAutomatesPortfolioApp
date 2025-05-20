@@ -82,8 +82,11 @@
         <div
           class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow"
         >
-          <NuxtImg src="/assets/images/train.avif" 
-          alt="Brain lightbulb illustration" class="h-32 w-auto mb-6" />
+          <NuxtImg
+            src="/assets/images/train.avif"
+            alt="Brain lightbulb illustration"
+            class="h-32 w-auto mb-6"
+          />
           <h3 class="text-2xl font-bold mb-4">Workshops & Training</h3>
           <p class="text-gray-600">
             Upgrade and empower your team to work smarter with practical
@@ -95,8 +98,11 @@
         <div
           class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow"
         >
-          <NuxtImg src="/assets/images/consult.avif"  
-          alt="Automation consulting illustration" class="h-32 w-auto mb-6" />
+          <NuxtImg
+            src="/assets/images/consult.avif"
+            alt="Automation consulting illustration"
+            class="h-32 w-auto mb-6"
+          />
           <h3 class="text-2xl font-bold mb-4">Consulting (Automation & AI)</h3>
           <p class="text-gray-600">
             Get expert advice on how to best use automation & AI to streamline
@@ -108,8 +114,11 @@
         <div
           class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow"
         >
-          <NuxtImg src="/assets/images/nocode.avif" 
-          alt="Code blocks illustration" class="h-32 w-auto mb-6" />
+          <NuxtImg
+            src="/assets/images/nocode.avif"
+            alt="Code blocks illustration"
+            class="h-32 w-auto mb-6"
+          />
           <h3 class="text-2xl font-bold mb-4">No-code to custom code</h3>
           <p class="text-gray-600">
             Whether you need simple tools or custom solutions, we tailor our
@@ -118,6 +127,71 @@
         </div>
       </div>
     </div>
+    <!-- Web3 & AI Innovations Section -->
+    <section class="mt-16">
+      <h2 class="text-3xl font-bold mb-8 text-gray-900 text-center">
+        Web3 & AI Innovations
+      </h2>
+      <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto text-center ">
+        Explore the frontier of decentralized, intelligent software—from
+        AI-powered experiences to blockchain-native deployments.
+      </p>
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+      >
+        <!-- Onchain AI Agents & Token Deployments -->
+        <div
+          class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow"
+        >
+          <NuxtImg
+            src="/assets/images/istockphoto-1488104305-612x612.webp"
+            alt="Blockchain AI agents illustration"
+            class="h-32 w-[18rem] max-w-[27rem] rounded-xl mb-6"
+          />
+          <h3 class="text-2xl font-bold mb-4">
+            Onchain AI Agents & Token Deployments
+          </h3>
+          <p class="text-gray-600">
+            Launch autonomous AI agents and deploy tokens on any blockchain—
+            securely, efficiently, and at scale.
+          </p>
+        </div>
+
+        <!-- AI-Powered Full-Stack Apps -->
+        <div
+          class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow"
+        >
+          <NuxtImg
+            src="/assets/images/istockphoto-505327540-612x612.webp"
+            alt="AI full-stack app illustration"
+            class="h-32 w-auto mb-6"
+          />
+          <h3 class="text-2xl font-bold mb-4">AI-Powered Full-Stack Apps</h3>
+          <p class="text-gray-600">
+            Build intelligent full-stack apps that combine modern frontends,
+            powerful backends, and AI-driven experiences.
+          </p>
+        </div>
+
+        <!-- Decentralized Applications (dApps) -->
+        <div
+          class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow"
+        >
+          <NuxtImg
+            src="/assets/images/istockphoto-2158395414-612x612.webp"
+            alt="Decentralized application"
+            class="h-32 w-[18rem] max-w-[27rem] rounded-xl mb-4"
+          />
+          <h3 class="text-2xl font-bold mb-4">
+            Decentralized Applications (dApps)
+          </h3>
+          <p class="text-gray-600">
+            Create trustless, blockchain-native applications where users control
+            their own data, identities, and value.
+          </p>
+        </div>
+      </div>
+    </section>
   </section>
 </template>
 

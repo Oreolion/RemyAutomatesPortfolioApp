@@ -137,7 +137,7 @@
           ref="featuresHeadline"
           class="text-3xl md:text-4xl font-bold text-center max-w-2xl mx-auto leading-tight"
         >
-          It's 2024, time to say goodbye to yesterday's headaches.
+          It's 2025, time to say goodbye to yesterday's headaches.
         </h2>
 
         <div

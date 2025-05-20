@@ -92,7 +92,7 @@
             Request a brainstorm →
           </NuxtLink>
           <div class="mt-4 opacity-80">
-            Or say hi first: hello@remyautomates.com
+            Or say hi first: ra@remyautomates.com
           </div>
         </div>
       </div>
@@ -117,11 +117,29 @@ import {
 
 const automations = [
   {
+    title: "Onchain Automation",
+    description:
+      "Automate smart contract execution, token rewards, and decentralized workflows. Reduce gas costs and improve trust with onchain logic.",
+    icon: "/assets/logos/aiautomation.png",
+  },
+  {
+    title: "Blockchain Integration for Full-Stack & dApps",
+    description:
+      "Seamlessly connect your apps to Ethereum, Base, Solana, or other chains. Automate wallet access, data sync, and onchain actions securely.",
+    icon: "/assets/logos/download.png",
+  },
+  {
     title: "Generate Automatic Reports",
     description:
       "Stop wasting time pulling data from different sources. Let automated reports give you real-time insights without the hassle.",
     icon: "/assets/images/report.avif",
   },
+  {
+  title: "Build Full-Stack Apps & dApps from Scratch",
+  description:
+    "Automate scaffolding, smart contract setup, backend logic, and frontend deployment to rapidly launch modern full-stack and decentralized apps.",
+  icon: "/assets/logos/blockchainapp.webp",
+},
   {
     title: "Sync Data Across Apps",
     description:

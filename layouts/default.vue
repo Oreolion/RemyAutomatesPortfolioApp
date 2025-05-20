@@ -66,7 +66,7 @@ import Navbar from "~/components/Navbar.vue";
             src="/assets/logos/raautologo.webp"
           ></NuxtImg>
           <span
-            class="font-bold text-2xl text-gray-800 font-mono whitespace-nowrap"
+            class="font-bold text-base text-gray-800 font-mono whitespace-nowrap"
             >Remy Automates</span
           >
         </NuxtLink>
