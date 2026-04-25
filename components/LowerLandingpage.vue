@@ -17,13 +17,14 @@
           <p class="text-base sm:text-lg text-slate-400">Here are some real world use cases we deliver.</p>
         </div>
 
-        <div ref="automationGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-16 sm:mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-16 sm:mb-24">
           <div
             v-for="(item, index) in automations"
             :key="index"
-            class="group relative p-5 sm:p-6 rounded-2xl glass glow-border hover:bg-surface-hover transition-all duration-500"
+            class="group relative p-5 sm:p-6 rounded-2xl bg-surface border border-white/[0.08] hover:border-cyan-glow/30 transition-all duration-500"
+            :ref="(el) => { if (el) automationRefs[index] = el; }"
           >
-            <div class="absolute inset-0 bg-gradient-to-br from-cyan-glow/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-glow/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
             <div class="relative z-10">
               <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-glow/10 to-violet-glow/10 border border-white/[0.06] flex items-center justify-center mb-4">
                 <NuxtImg :src="item.icon" class="w-5 h-5 object-contain" />
@@ -47,29 +48,15 @@
             </p>
           </div>
 
-          <div ref="toolsContainer" class="relative h-[260px] sm:h-[320px] md:h-[400px] mb-10 flex items-center justify-center">
-            <!-- Center hub -->
-            <div class="absolute w-20 h-20 rounded-full bg-gradient-to-br from-cyan-glow/20 to-violet-glow/20 border border-cyan-glow/30 flex items-center justify-center z-10 animate-pulse-glow">
-              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-glow to-violet-glow flex items-center justify-center">
-                <svg class="w-6 h-6 text-void" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-            </div>
-
-            <!-- Orbiting logos -->
-            <div
+          <div ref="logosContainer" class="floating-logos relative h-[300px] sm:h-[350px] md:h-[400px] mb-10">
+            <img
               v-for="(logo, index) in toolLogos"
               :key="index"
-              class="absolute w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl glass flex items-center justify-center shadow-lg transition-all duration-700 hover:scale-110 hover:shadow-glow-cyan"
-              :style="getOrbitStyle(index, toolLogos.length)"
-            >
-              <img :src="logo.src" :alt="logo.name" class="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 object-contain" />
-            </div>
-
-            <!-- Orbit rings -->
-            <div class="absolute w-[180px] h-[180px] sm:w-[200px] sm:h-[200px] md:w-[280px] md:h-[280px] rounded-full border border-white/[0.04] animate-spin-slow" />
-            <div class="absolute w-[260px] h-[260px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] rounded-full border border-white/[0.03] animate-spin-slow" style="animation-direction: reverse; animation-duration: 30s;" />
+              :src="logo.src"
+              :alt="logo.name"
+              class="absolute w-12 h-12 sm:w-14 sm:h-14 rounded-xl glass shadow-lg"
+              :ref="(el) => { if (el) logoRefs[index] = el; }"
+            />
           </div>
 
           <div class="text-center">
@@ -145,31 +132,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const automationGrid = ref<HTMLElement | null>(null);
-const toolsContainer = ref<HTMLElement | null>(null);
-
-const isMobile = ref(false);
-
-const getOrbitStyle = (index: number, total: number) => {
-  if (typeof window === 'undefined') return {};
-  const angle = (index / total) * 360;
-  const radius = isMobile.value ? 100 : 160;
-  const x = Math.cos((angle * Math.PI) / 180) * radius;
-  const y = Math.sin((angle * Math.PI) / 180) * radius;
-  return {
-    transform: `translate(${x}px, ${y}px)`,
-  };
-};
-
-const updateMobile = () => {
-  isMobile.value = window.innerWidth < 768;
-};
+const logosContainer = ref<HTMLElement | null>(null);
+const logoRefs = ref<HTMLElement[]>([]);
+const automationRefs = ref<HTMLElement[]>([]);
 
 const automations = [
   {
@@ -243,28 +214,47 @@ const toolLogos = [
   { name: "Gmail", src: "/assets/logos/gmail-icon.svg" },
   { name: "X", src: "/assets/logos/x-share-button-icon(1).svg" },
   { name: "Facebook", src: "/assets/logos/facebook-square-icon.svg" },
+  { name: "Airtable", src: "/assets/images/airtable-vector-logo-2022-small.png" },
 ];
 
 onMounted(() => {
-  updateMobile();
-  window.addEventListener('resize', updateMobile);
+  // Animate automation cards
+  gsap.from(automationRefs.value, {
+    y: 50,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: automationRefs.value[0]?.parentElement,
+      start: "top 85%",
+    },
+  });
 
-  if (automationGrid.value) {
-    gsap.from(automationGrid.value.children, {
-      y: 50, opacity: 0, duration: 0.7, stagger: 0.08, ease: "power2.out",
-      scrollTrigger: { trigger: automationGrid.value, start: "top 85%" },
+  // Animate floating logos — original colliding animation restored
+  logoRefs.value.forEach((logo, index) => {
+    gsap.to(logo, {
+      x: "random(-220, 220)",
+      y: "random(-80, 80)",
+      rotation: "random(-20, 20)",
+      duration: "random(2.5, 4.5)",
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      delay: index * 0.15,
     });
-  }
-
-  if (toolsContainer.value) {
-    gsap.from(toolsContainer.value.children, {
-      scale: 0.8, opacity: 0, duration: 1, stagger: 0.1, ease: "back.out(1.7)",
-      scrollTrigger: { trigger: toolsContainer.value, start: "top 80%" },
-    });
-  }
-
-  onUnmounted(() => {
-    window.removeEventListener('resize', updateMobile);
   });
 });
 </script>
+
+<style scoped>
+.floating-logos {
+  margin: 2rem auto;
+}
+
+@media (max-width: 380px) {
+  .floating-logos {
+    height: 260px;
+  }
+}
+</style>

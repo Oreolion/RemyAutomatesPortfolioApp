@@ -96,7 +96,7 @@
           <div
             v-for="(stat, i) in stats"
             :key="i"
-            class="group relative p-6 sm:p-8 rounded-2xl glass glow-border text-left overflow-hidden"
+            class="group relative p-6 sm:p-8 rounded-2xl glass text-left overflow-hidden hover:border-cyan-glow/20 transition-colors"
           >
             <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-glow/5 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
             <div class="text-5xl md:text-6xl font-bold text-gradient mb-4">{{ stat.value }}</div>
@@ -136,7 +136,7 @@
           <div
             v-for="(item, i) in problems"
             :key="i"
-            class="group relative p-6 sm:p-8 rounded-2xl glass glow-border text-left"
+            class="group relative p-6 sm:p-8 rounded-2xl glass text-left hover:border-cyan-glow/20 transition-colors"
           >
             <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-glow/10 to-violet-glow/10 border border-white/[0.06] flex items-center justify-center mb-6 group-hover:from-cyan-glow/20 group-hover:to-violet-glow/20 transition-all">
               <NuxtImg :src="item.icon" class="w-6 h-6 object-contain opacity-80" />

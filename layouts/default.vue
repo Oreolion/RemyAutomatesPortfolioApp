@@ -89,10 +89,10 @@ import Navbar from "~/components/Navbar.vue";
         <!-- Bottom bar -->
         <div class="pt-8 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-4">
           <p class="text-xs text-slate-600 font-mono">
-            © 2025 Remy Automates. All rights reserved.
+            © 2026 Remy Automates. All rights reserved.
           </p>
           <p class="text-xs text-slate-600 font-mono">
-            Built with <span class="text-cyan-glow/60">AI</span> & precision.
+            Transforming workflows worldwide.
           </p>
         </div>
       </div>

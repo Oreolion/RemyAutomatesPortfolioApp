@@ -70,7 +70,7 @@
           <div
             v-for="(feature, i) in web3Features"
             :key="i"
-            class="group relative p-5 sm:p-7 rounded-2xl glass glow-border overflow-hidden transition-all duration-500"
+            class="group relative p-5 sm:p-7 rounded-2xl glass overflow-hidden transition-all duration-500 hover:border-cyan-glow/20"
           >
             <div class="absolute inset-0 bg-gradient-to-br from-violet-glow/[0.03] to-cyan-glow/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
