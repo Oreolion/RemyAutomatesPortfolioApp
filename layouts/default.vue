@@ -3,76 +3,98 @@ import Navbar from "~/components/Navbar.vue";
 </script>
 
 <template>
-  <div>
+  <div class="bg-void min-h-screen">
     <Navbar />
     <main>
       <slot />
     </main>
-    <footer
-      class="bg-purple-600 rounded-2xl min-h-[18rem] p-8 mx-4 -mt-8 text-white"
-    >
-      <div class="flex flex-col justify-between mb-6 md:flex-row">
-        <h1 class="text-3xl font-bold mb-4">
-          Every day should feel like Friday.
-        </h1>
-        <NuxtLink
-          to="/form"
-          class="hidden md:flex items-center gap-2 bg-black text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
-        >
-          <span class="h-3 w-3 bg-green-500 rounded-full"></span>
-          Book Call
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </NuxtLink>
-      </div>
-      <div class="flex-col gap-4 justify-between max-md:flex-row">
-        <div class="flex gap-4 items-center mb-4">
-          <NuxtLink to="/" class="opacity-60 hover:opacity-100"
-            ><NuxtImg
-              height="25"
-              width="25"
-              src="/assets/logos/gmail-icon.svg"
-            ></NuxtImg
-          ></NuxtLink>
-          <NuxtLink to="/" class="opacity-60 hover:opacity-100"
-            ><NuxtImg
-              height="25"
-              width="25"
-              src="/assets/logos/linkedin-app-icon.svg"
-            ></NuxtImg
-          ></NuxtLink>
-          <NuxtLink to="/" class="opacity-60 hover:opacity-100"
-            ><NuxtImg
-              height="50"
-              width="50"
-              src="/assets/logos/follow-us-on-x-icon.svg"
-            ></NuxtImg
-          ></NuxtLink>
+
+    <!-- Footer -->
+    <footer class="relative border-t border-white/[0.06] bg-void-light">
+      <!-- Top gradient line -->
+      <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-glow/20 to-transparent" />
+
+      <div class="max-w-7xl mx-auto px-4 py-16 md:py-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          <!-- Brand -->
+          <div class="lg:col-span-2">
+            <NuxtLink to="/" class="flex items-center gap-2.5 mb-6 group">
+              <div class="relative w-8 h-8 flex items-center justify-center">
+                <div class="absolute inset-0 bg-gradient-to-br from-cyan-glow to-violet-glow rounded-lg opacity-20 group-hover:opacity-40 transition-opacity" />
+                <NuxtImg height="20" width="20" src="/assets/logos/raautologo.webp" class="relative z-10 rounded" />
+              </div>
+              <span class="font-bold text-lg text-white">Remy Automates</span>
+            </NuxtLink>
+            <p class="text-slate-400 max-w-sm leading-relaxed mb-6">
+              We help teams save 10+ hours every week by automating repetitive tasks with AI-powered workflows and intelligent integrations.
+            </p>
+            <div class="flex items-center gap-4">
+              <a
+                href="mailto:ra@remyautomates.com"
+                class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center hover:border-cyan-glow/30 hover:bg-cyan-glow/5 transition-all group"
+              >
+                <NuxtImg height="18" width="18" src="/assets/logos/gmail-icon.svg" class="opacity-60 group-hover:opacity-100 transition-opacity" />
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center hover:border-cyan-glow/30 hover:bg-cyan-glow/5 transition-all group"
+              >
+                <NuxtImg height="18" width="18" src="/assets/logos/linkedin-app-icon.svg" class="opacity-60 group-hover:opacity-100 transition-opacity" />
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center hover:border-cyan-glow/30 hover:bg-cyan-glow/5 transition-all group"
+              >
+                <NuxtImg height="18" width="18" src="/assets/logos/follow-us-on-x-icon.svg" class="opacity-60 group-hover:opacity-100 transition-opacity" />
+              </a>
+            </div>
+          </div>
+
+          <!-- Links -->
+          <div>
+            <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-6">Navigation</h4>
+            <ul class="space-y-3">
+              <li>
+                <NuxtLink to="/" class="text-slate-400 hover:text-cyan-glow transition-colors text-sm">Home</NuxtLink>
+              </li>
+              <li>
+                <NuxtLink to="/#solutions" class="text-slate-400 hover:text-cyan-glow transition-colors text-sm">Solutions</NuxtLink>
+              </li>
+              <li>
+                <NuxtLink to="/#popular-automations" class="text-slate-400 hover:text-cyan-glow transition-colors text-sm">Automations</NuxtLink>
+              </li>
+              <li>
+                <NuxtLink to="/form" class="text-slate-400 hover:text-cyan-glow transition-colors text-sm">Book a Call</NuxtLink>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-6">Contact</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="mailto:ra@remyautomates.com" class="text-slate-400 hover:text-cyan-glow transition-colors text-sm">ra@remyautomates.com</a>
+              </li>
+              <li>
+                <NuxtLink to="/form" class="btn-primary text-xs px-4 py-2.5 mt-2 inline-flex">
+                  <span class="w-1.5 h-1.5 bg-void rounded-full" />
+                  Book a Call
+                </NuxtLink>
+              </li>
+            </ul>
+          </div>
         </div>
-        <NuxtLink to="/" class="flex items-center">
-          <NuxtImg
-            height="23"
-            width="23"
-            src="/assets/logos/raautologo.webp"
-          ></NuxtImg>
-          <span
-            class="font-bold text-base text-gray-800 font-mono whitespace-nowrap"
-            >Remy Automates</span
-          >
-        </NuxtLink>
-      </div>
-      <div class="mt-20 text-sm opacity-60 border-t-2 pt-4">
-        © Copyright 2025, All Rights Reserved
+
+        <!-- Bottom bar -->
+        <div class="pt-8 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-4">
+          <p class="text-xs text-slate-600 font-mono">
+            © 2025 Remy Automates. All rights reserved.
+          </p>
+          <p class="text-xs text-slate-600 font-mono">
+            Built with <span class="text-cyan-glow/60">AI</span> & precision.
+          </p>
+        </div>
       </div>
     </footer>
   </div>

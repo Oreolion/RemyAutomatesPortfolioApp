@@ -1,119 +1,108 @@
 <template>
   <nav
-    class="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 px-4 py-5 border-b border-gray-200"
+    ref="navRef"
+    :class="[
+      'fixed top-0 w-full z-50 transition-all duration-500',
+      scrolled ? 'glass-strong py-3' : 'bg-transparent py-5',
+    ]"
   >
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <NuxtLink to="/" class="flex items-center">
-       <NuxtImg height="24" width="24" src="/assets/logos/raautologo.webp"></NuxtImg>
-        <span class="font-bold whitespace-nowrap text-base font-mono">Remy Automates</span>
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
+      <NuxtLink to="/" class="flex items-center gap-2.5 group">
+        <div class="relative w-8 h-8 flex items-center justify-center">
+          <div class="absolute inset-0 bg-gradient-to-br from-cyan-glow to-violet-glow rounded-lg opacity-20 group-hover:opacity-40 transition-opacity" />
+          <div class="absolute inset-0 bg-gradient-to-br from-cyan-glow to-violet-glow rounded-lg blur-md opacity-0 group-hover:opacity-30 transition-opacity" />
+          <NuxtImg
+            height="20"
+            width="20"
+            src="/assets/logos/raautologo.webp"
+            class="relative z-10 rounded"
+          />
+        </div>
+        <span class="font-bold text-base tracking-tight text-white group-hover:text-cyan-glow transition-colors">
+          Remy Automates
+        </span>
       </NuxtLink>
 
-      <div class="hidden md:flex items-center gap-6">
+      <div class="hidden md:flex items-center gap-1">
         <NuxtLink
-          to="#solutions"
-          class="text-xl font-bold  text-gray-600 hover:text-gray-900 transition-colors"
-          >Solutions</NuxtLink
+          v-for="item in navItems"
+          :key="item.to"
+          :to="item.to"
+          class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white rounded-full hover:bg-white/[0.04] transition-all duration-300"
         >
-        <NuxtLink
-          to="#popular-automations"
-          class="text-xl font-bold  text-gray-600 hover:text-gray-900 transition-colors"
-          >Popular Automations</NuxtLink
-        >
-        <NuxtLink
-          to="#contact"
-          class="text-xl font-bold text-gray-600 hover:text-gray-900 transition-colors"
-          >Contact</NuxtLink
-        >
+          {{ item.label }}
+        </NuxtLink>
       </div>
 
-      <NuxtLink
+      <div class="hidden md:flex items-center gap-3">
+        <NuxtLink
           to="/form"
-          class="hidden md:flex items-center gap-2 bg-black text-white px-6 py-5 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
+          class="btn-primary text-sm px-5 py-2.5"
         >
-          <span class="h-3 w-3 bg-green-500 rounded-full"></span>
-          Book Call
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-              clip-rule="evenodd"
-            />
-          </svg>
+          <span class="w-1.5 h-1.5 bg-void rounded-full animate-pulse" />
+          Book a Call
         </NuxtLink>
+      </div>
 
       <button
         @click="toggleMobileMenu"
-        class="md:hidden bg-gray-100 p-2 rounded-full"
+        class="md:hidden relative w-10 h-10 flex items-center justify-center rounded-xl bg-white/[0.04] border border-white/[0.06]"
       >
-        <svg
-          v-if="!isMobileMenuOpen"
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-            clip-rule="evenodd"
+        <div class="flex flex-col gap-1.5 w-5">
+          <span
+            :class="[
+              'block h-px bg-slate-300 transition-all duration-300',
+              isMobileMenuOpen ? 'rotate-45 translate-y-[3.5px]' : '',
+            ]"
           />
-        </svg>
-        <svg
-          v-else
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-            clip-rule="evenodd"
+          <span
+            :class="[
+              'block h-px bg-slate-300 transition-all duration-300',
+              isMobileMenuOpen ? 'opacity-0' : '',
+            ]"
           />
-        </svg>
+          <span
+            :class="[
+              'block h-px bg-slate-300 transition-all duration-300',
+              isMobileMenuOpen ? '-rotate-45 -translate-y-[3.5px]' : '',
+            ]"
+          />
+        </div>
       </button>
     </div>
 
     <!-- Mobile Menu -->
     <transition
-      enter-active-class="transition ease-out duration-100 transform"
-      enter-from-class="opacity-0 scale-95"
-      enter-to-class="opacity-100 scale-100"
-      leave-active-class="transition ease-in duration-75 transform"
-      leave-from-class="opacity-100 scale-100"
-      leave-to-class="opacity-0 scale-95"
+      enter-active-class="transition ease-out duration-200"
+      enter-from-class="opacity-0 -translate-y-2"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition ease-in duration-150"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 -translate-y-2"
     >
       <div
         v-if="isMobileMenuOpen"
-        class="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg rounded-b-lg"
+        class="md:hidden absolute top-full left-0 right-0 mx-4 mt-2 glass-strong rounded-2xl border border-white/[0.08] overflow-hidden"
       >
-        <div class="px-2 pt-2 pb-3 space-y-1">
+        <div class="p-2 space-y-1">
           <NuxtLink
-            to="#solutions"
-            class="block px-3 py-2 rounded-md text-xl font-bold  text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-            >Solutions</NuxtLink
+            v-for="item in navItems"
+            :key="item.to"
+            :to="item.to"
+            @click="isMobileMenuOpen = false"
+            class="block px-4 py-3 rounded-xl text-sm font-medium text-slate-300 hover:text-white hover:bg-white/[0.04] transition-all"
           >
-          <NuxtLink
-            to="#popular-automations"
-            class="block px-3 py-2 rounded-md text-xl font-bold  text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-            >Popular Automations</NuxtLink
-          >
-          <NuxtLink
-            to="#contact"
-            class="block px-3 py-2 rounded-md text-xl font-bold  text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-            >Contact</NuxtLink
-          >
-          <NuxtLink
-            to="/form"
-            class="w-full text-left block px-3 py-2 rounded-md text-xl font-bold  text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-          >
-            Book Call
+            {{ item.label }}
           </NuxtLink>
+          <div class="pt-2 border-t border-white/[0.06]">
+            <NuxtLink
+              to="/form"
+              @click="isMobileMenuOpen = false"
+              class="block px-4 py-3 rounded-xl text-sm font-semibold text-void bg-gradient-to-r from-cyan-glow to-cyan-500/80 text-center"
+            >
+              Book a Call
+            </NuxtLink>
+          </div>
         </div>
       </div>
     </transition>
@@ -121,12 +110,44 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 
 const isMobileMenuOpen = ref(false);
+const scrolled = ref(false);
+const navRef = ref<HTMLElement | null>(null);
+
+const navItems = [
+  { label: "Solutions", to: "#solutions" },
+  { label: "Automations", to: "#popular-automations" },
+  { label: "Contact", to: "#contact" },
+];
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
 };
 
+const closeMobileMenu = () => {
+  isMobileMenuOpen.value = false;
+};
+
+const handleScroll = () => {
+  scrolled.value = window.scrollY > 20;
+};
+
+const handleClickOutside = (event: MouseEvent) => {
+  if (navRef.value && !navRef.value.contains(event.target as Node)) {
+    isMobileMenuOpen.value = false;
+  }
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+  document.addEventListener("click", handleClickOutside);
+  handleScroll();
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+  document.removeEventListener("click", handleClickOutside);
+});
 </script>

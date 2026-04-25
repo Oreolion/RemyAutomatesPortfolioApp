@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-void min-h-screen">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
@@ -8,63 +8,65 @@
 
 <script setup>
 useHead({
-  title: "Remy Automates",
+  title: "Remy Automates — AI Automation Agency",
   meta: [
     {
       name: "viewport",
-    content: "width=device-width, initial-scale=1.0",
+      content: "width=device-width, initial-scale=1.0",
     },
     {
-    name: "description",
-    content: "Remy Automates offers innovative automation solutions, expert software development, and process optimization services. Hire Remy Automates for your next project and boost your business efficiency.",
+      name: "description",
+      content: "Remy Automates offers innovative AI automation solutions, expert software development, and process optimization services. Transform your business with cutting-edge automation.",
     },
     {
-    name: "keywords",
-    content: "Remy Automates, automation solutions, software development, process optimization, business automation, technology consulting, digital transformation",
+      name: "keywords",
+      content: "Remy Automates, AI automation, automation solutions, software development, process optimization, business automation, technology consulting, digital transformation, AI agents, Web3",
     },
     {
-    name: "author",
-    content: "Remy Automates",
+      name: "author",
+      content: "Remy Automates",
     },
     {
-    property: "og:title",
-    content: "Remy Automates - Innovative Automation Solutions & Software Development",
+      property: "og:title",
+      content: "Remy Automates — AI Automation Agency",
     },
     {
-    property: "og:description",
-    content: "Expert automation, software development, and process optimization services by Remy Automates. Transform your business with cutting-edge solutions.",
+      property: "og:description",
+      content: "Expert AI automation, software development, and process optimization services. Transform your business with cutting-edge solutions.",
     },
     {
-    property: "og:type",
-    content: "website",
+      property: "og:type",
+      content: "website",
     },
     {
-    property: "og:url",
-    content: "https://remyautomates.com",
+      property: "og:url",
+      content: "https://remyautomates.com",
     },
     {
-    property: "og:image",
-    content: "https://remyautomates.com/assets/icon/og-image.png",
+      property: "og:image",
+      content: "https://remyautomates.com/assets/icon/og-image.png",
     },
     {
-    name: "twitter:card",
-    content: "summary_large_image",
+      name: "twitter:card",
+      content: "summary_large_image",
     },
     {
-    name: "twitter:title",
-    content: "Remy Automates - Innovative Automation Solutions & Software Development",
+      name: "twitter:title",
+      content: "Remy Automates — AI Automation Agency",
     },
     {
-    name: "twitter:description",
-    content: "Expert automation, software development, and process optimization services by Remy Automates.",
+      name: "twitter:description",
+      content: "Expert AI automation, software development, and process optimization services.",
     },
     {
-    name: "twitter:image",
-    content: "https://yourdomain.com/assets/icon/og-image.png",
-     
+      name: "twitter:image",
+      content: "https://remyautomates.com/assets/icon/og-image.png",
     },
   ],
   link: [
+    { rel: "preconnect", href: "https://fonts.googleapis.com" },
+    { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
+    { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" },
     {
       rel: "icon",
       type: "image/png",
@@ -94,3 +96,13 @@ useHead({
   ],
 });
 </script>
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+body {
+  font-family: 'Outfit', system-ui, sans-serif;
+  background-color: #050508;
+  color: #e2e8f0;
+}
+</style>
