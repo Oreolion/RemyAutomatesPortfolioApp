@@ -21,12 +21,12 @@
           <div
             v-for="(item, index) in automations"
             :key="index"
-            class="group relative p-5 sm:p-6 rounded-2xl bg-surface border border-white/[0.08] hover:border-cyan-glow/30 transition-all duration-500"
+            class="group relative p-5 sm:p-6 rounded-2xl bg-[#13131f] border border-white/[0.12] hover:border-cyan-glow/40 transition-all duration-500 shadow-lg shadow-black/20"
             :ref="(el) => { if (el) automationRefs[index] = el; }"
           >
-            <div class="absolute inset-0 bg-gradient-to-br from-cyan-glow/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-glow/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
             <div class="relative z-10">
-              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-glow/10 to-violet-glow/10 border border-white/[0.06] flex items-center justify-center mb-4">
+              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-glow/15 to-violet-glow/15 border border-white/[0.1] flex items-center justify-center mb-4">
                 <NuxtImg :src="item.icon" class="w-5 h-5 object-contain" />
               </div>
               <h3 class="font-semibold text-white mb-2">{{ item.title }}</h3>
@@ -48,15 +48,55 @@
             </p>
           </div>
 
-          <div ref="logosContainer" class="floating-logos relative h-[300px] sm:h-[350px] md:h-[400px] mb-10">
-            <img
-              v-for="(logo, index) in toolLogos"
-              :key="index"
-              :src="logo.src"
-              :alt="logo.name"
-              class="absolute w-12 h-12 sm:w-14 sm:h-14 rounded-xl glass shadow-lg"
-              :ref="(el) => { if (el) logoRefs[index] = el; }"
-            />
+          <!-- Floating Tools Network -->
+          <div class="relative mx-auto" style="max-width: 700px;">
+            <div ref="toolsContainer" class="floating-tools relative h-[360px] sm:h-[420px] md:h-[480px] mb-10">
+              <!-- SVG Connection Lines -->
+              <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="rgba(0,240,255,0.3)" />
+                    <stop offset="100%" stop-color="rgba(167,139,250,0.3)" />
+                  </linearGradient>
+                </defs>
+                <!-- Lines from center to each logo position -->
+                <line
+                  v-for="(pos, i) in logoPositions"
+                  :key="`line-${i}`"
+                  :x1="centerX"
+                  :y1="centerY"
+                  :x2="pos.x"
+                  :y2="pos.y"
+                  stroke="url(#lineGrad)"
+                  stroke-width="1"
+                  stroke-dasharray="4 4"
+                  opacity="0.4"
+                />
+              </svg>
+
+              <!-- Center Hub -->
+              <div
+                class="absolute z-20 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-cyan-glow/30 to-violet-glow/30 border border-cyan-glow/40 flex items-center justify-center"
+                :style="{ top: `calc(50% - 32px)`, left: `calc(50% - 32px)` }"
+              >
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-cyan-glow to-violet-glow flex items-center justify-center shadow-glow-cyan animate-pulse-glow">
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-void" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Floating Logos -->
+              <div
+                v-for="(logo, index) in allLogos"
+                :key="index"
+                class="logo-float absolute z-10 flex items-center justify-center rounded-xl bg-[#13131f] border border-white/[0.15] shadow-lg shadow-black/40 p-2"
+                :style="getLogoSize(logo.size)"
+                :ref="(el) => { if (el) logoRefs[index] = el; }"
+              >
+                <img :src="logo.src" :alt="logo.name" class="w-full h-full object-contain" />
+              </div>
+            </div>
           </div>
 
           <div class="text-center">
@@ -132,15 +172,117 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const logosContainer = ref<HTMLElement | null>(null);
+const toolsContainer = ref<HTMLElement | null>(null);
 const logoRefs = ref<HTMLElement[]>([]);
 const automationRefs = ref<HTMLElement[]>([]);
+
+const centerX = 350; // half of max-width 700
+const centerY = 180; // approximate half of height (will be responsive)
+
+const allLogos = [
+  // AI & Automation tools
+  { name: "ChatGPT", src: "/assets/images/chatgpt-icon.webp", size: "md" },
+  { name: "Claude", src: "/assets/images/t_claude-ai9117.logowik.com.webp", size: "md" },
+  { name: "Gemini", src: "/assets/images/google-gemini-icon.svg", size: "md" },
+  { name: "Zapier", src: "/assets/images/Zapier_logo.jpg", size: "md" },
+  { name: "ElevenLabs", src: "/assets/images/9trrmnj2sj8-logo-logo.svg", size: "md" },
+  { name: "Airtable", src: "/assets/images/airtable-vector-logo-2022-small.png", size: "md" },
+  // Social & Communication
+  { name: "Slack", src: "/assets/logos/slack-icon.svg", size: "sm" },
+  { name: "Gmail", src: "/assets/logos/gmail-icon.svg", size: "sm" },
+  { name: "LinkedIn", src: "/assets/logos/linkedin-app-icon.svg", size: "sm" },
+  { name: "YouTube", src: "/assets/logos/youtube-logo-icon(1).svg", size: "sm" },
+  { name: "Teams", src: "/assets/logos/microsoft-teams-icon.svg", size: "sm" },
+  { name: "TikTok", src: "/assets/logos/tiktok-color-icon.svg", size: "sm" },
+  { name: "X", src: "/assets/logos/x-share-button-icon(1).svg", size: "sm" },
+  { name: "Facebook", src: "/assets/logos/facebook-square-icon.svg", size: "sm" },
+];
+
+const getLogoSize = (size: string) => {
+  if (size === "md") {
+    return { width: "52px", height: "52px" };
+  }
+  return { width: "44px", height: "44px" };
+};
+
+// Calculate initial circular positions for logos
+const logoPositions = computed(() => {
+  const positions = [];
+  const count = allLogos.length;
+  const baseRadius = 110;
+  for (let i = 0; i < count; i++) {
+    const angle = (i / count) * Math.PI * 2;
+    // Add some randomness to radius so it's not a perfect circle
+    const radius = baseRadius + (Math.random() * 40 - 20);
+    positions.push({
+      x: centerX + Math.cos(angle) * radius,
+      y: centerY + Math.sin(angle) * radius,
+    });
+  }
+  return positions;
+});
+
+onMounted(() => {
+  // Animate automation cards
+  gsap.from(automationRefs.value, {
+    y: 50,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: automationRefs.value[0]?.parentElement,
+      start: "top 85%",
+    },
+  });
+
+  // Position logos initially in a circle, then animate them floating/colliding
+  logoRefs.value.forEach((logo, index) => {
+    if (!logo) return;
+    const pos = logoPositions.value[index];
+    // Set initial position
+    gsap.set(logo, {
+      left: pos.x,
+      top: pos.y,
+      xPercent: -50,
+      yPercent: -50,
+    });
+
+    // Floating animation — tighter range for more collision/communication feel
+    gsap.to(logo, {
+      x: `random(-60, 60)`,
+      y: `random(-50, 50)`,
+      rotation: `random(-12, 12)`,
+      scale: `random(0.92, 1.08)`,
+      duration: `random(2, 3.5)`,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      delay: index * 0.12,
+    });
+  });
+
+  // Animate connection lines opacity
+  const lines = toolsContainer.value?.querySelectorAll("line");
+  if (lines) {
+    gsap.from(lines, {
+      opacity: 0,
+      duration: 1,
+      stagger: 0.05,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: toolsContainer.value,
+        start: "top 80%",
+      },
+    });
+  }
+});
 
 const automations = [
   {
@@ -204,57 +346,22 @@ const automations = [
     icon: "/assets/logos/client.avif",
   },
 ];
-
-const toolLogos = [
-  { name: "TikTok", src: "/assets/logos/tiktok-color-icon.svg" },
-  { name: "YouTube", src: "/assets/logos/youtube-logo-icon(1).svg" },
-  { name: "LinkedIn", src: "/assets/logos/linkedin-app-icon.svg" },
-  { name: "Teams", src: "/assets/logos/microsoft-teams-icon.svg" },
-  { name: "Slack", src: "/assets/logos/slack-icon.svg" },
-  { name: "Gmail", src: "/assets/logos/gmail-icon.svg" },
-  { name: "X", src: "/assets/logos/x-share-button-icon(1).svg" },
-  { name: "Facebook", src: "/assets/logos/facebook-square-icon.svg" },
-  { name: "Airtable", src: "/assets/images/airtable-vector-logo-2022-small.png" },
-];
-
-onMounted(() => {
-  // Animate automation cards
-  gsap.from(automationRefs.value, {
-    y: 50,
-    opacity: 0,
-    duration: 0.8,
-    stagger: 0.1,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: automationRefs.value[0]?.parentElement,
-      start: "top 85%",
-    },
-  });
-
-  // Animate floating logos — original colliding animation restored
-  logoRefs.value.forEach((logo, index) => {
-    gsap.to(logo, {
-      x: "random(-220, 220)",
-      y: "random(-80, 80)",
-      rotation: "random(-20, 20)",
-      duration: "random(2.5, 4.5)",
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      delay: index * 0.15,
-    });
-  });
-});
 </script>
 
 <style scoped>
-.floating-logos {
+.floating-tools {
   margin: 2rem auto;
 }
 
+@media (max-width: 640px) {
+  .floating-tools {
+    height: 320px !important;
+  }
+}
+
 @media (max-width: 380px) {
-  .floating-logos {
-    height: 260px;
+  .floating-tools {
+    height: 280px !important;
   }
 }
 </style>
