@@ -48,9 +48,9 @@
           </div>
 
           <!-- Floating Tools Network -->
-          <div ref="toolsContainer" class="relative mx-auto h-[320px] sm:h-[380px] md:h-[440px] max-w-[640px]">
-            <!-- SVG Connection Lines -->
-            <svg class="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible">
+          <div ref="toolsContainer" class="relative mx-auto h-[320px] sm:h-[380px] md:h-[440px] max-w-[640px] overflow-visible">
+            <!-- SVG Connection Lines (uses % so it scales with the container) -->
+            <svg class="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible" preserveAspectRatio="none">
               <defs>
                 <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.3" />
@@ -60,10 +60,10 @@
               <line
                 v-for="(pos, i) in logoPositions"
                 :key="`line-${i}`"
-                :x1="centerX"
-                :y1="centerY"
-                :x2="pos.x"
-                :y2="pos.y"
+                x1="50%"
+                y1="50%"
+                :x2="`${pos.xPct}%`"
+                :y2="`${pos.yPct}%`"
                 stroke="url(#lineGrad)"
                 stroke-width="1"
                 stroke-dasharray="4 4"
@@ -82,15 +82,17 @@
               </div>
             </div>
 
-            <!-- Floating Logos — inline style for SSR positioning, GSAP adds float animation client-side -->
+            <!-- Floating Logos — % positioning so they stay inside the container at every breakpoint.
+                 Centering offset (-50%,-50%) handled by GSAP xPercent/yPercent so it composes with float animation. -->
             <div
               v-for="(logo, index) in allLogos"
               :key="index"
               class="logo-float absolute z-10 flex items-center justify-center rounded-xl bg-[#13131f] border border-white/[0.15] shadow-lg shadow-black/40"
               :class="logo.size === 'md' ? 'w-12 h-12 sm:w-14 sm:h-14 p-2' : 'w-10 h-10 sm:w-12 sm:h-12 p-1.5'"
               :style="{
-                left: logoPositions[index].x + 'px',
-                top: logoPositions[index].y + 'px',
+                left: logoPositions[index].xPct + '%',
+                top: logoPositions[index].yPct + '%',
+                transform: 'translate(-50%, -50%)',
               }"
             >
               <img :src="logo.src" :alt="logo.name" class="w-full h-full object-contain" loading="lazy" decoding="async" />
@@ -171,9 +173,6 @@ gsap.registerPlugin(ScrollTrigger);
 const toolsContainer = ref<HTMLElement | null>(null);
 const automationsGrid = ref<HTMLElement | null>(null);
 
-const centerX = 320;
-const centerY = 220;
-
 const allLogos = [
   { name: "ChatGPT", src: "/assets/images/chatgpt-icon.webp", size: "md" },
   { name: "Claude", src: "/assets/images/t_claude-ai9117.logowik.com.webp", size: "md" },
@@ -191,68 +190,65 @@ const allLogos = [
   { name: "Facebook", src: "/assets/logos/facebook-square-icon.svg", size: "sm" },
 ];
 
-// Deterministic positions — calculated once, used for both inline styles and GSAP
+// Container-relative positions (percentages) so logos stay inside the box at every breakpoint.
+// Radius shrinks slightly for tighter mobile containers; perturbed by index for organic look.
 const logoPositions = allLogos.map((_, i) => {
   const count = allLogos.length;
   const angle = (i / count) * Math.PI * 2 - Math.PI / 2;
-  const radius = 110 + ((i % 3) * 12);
+  const radiusPct = 36 + ((i % 3) * 3);
   return {
-    x: centerX + Math.cos(angle) * radius,
-    y: centerY + Math.sin(angle) * radius,
+    xPct: 50 + Math.cos(angle) * radiusPct,
+    yPct: 50 + Math.sin(angle) * radiusPct,
   };
 });
 
 onMounted(() => {
-  console.log("[LowerLandingpage] onMounted fired");
-
-  // Animate automation cards using querySelectorAll (no fragile v-for refs)
+  // Animate automation cards — fromTo with clearProps so cards never get stuck invisible
   if (automationsGrid.value) {
     const cards = automationsGrid.value.querySelectorAll(".automation-card");
-    console.log("[LowerLandingpage] Found automation cards:", cards.length);
     if (cards.length > 0) {
-      gsap.from(cards, {
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: automationsGrid.value,
-          start: "top 85%",
+      gsap.fromTo(
+        cards,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power2.out",
+          clearProps: "opacity,transform",
+          scrollTrigger: {
+            trigger: automationsGrid.value,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
         },
-      });
+      );
     }
   }
 
-  // Float the tool logos using querySelectorAll
+  // Float the tool logos. Position is the inline % left/top; GSAP centers via
+  // xPercent/yPercent (replacing the inline translate) and animates a small drift on top.
   if (toolsContainer.value) {
-    const logos = toolsContainer.value.querySelectorAll(".logo-float");
-    console.log("[LowerLandingpage] Found floating logos:", logos.length);
-
+    const logos = toolsContainer.value.querySelectorAll<HTMLElement>(".logo-float");
     logos.forEach((logo, index) => {
-      const pos = logoPositions[index];
-      if (!pos) return;
-
-      // First center the logo with GSAP (cleaner than inline transform)
-      gsap.set(logo, {
-        xPercent: -50,
-        yPercent: -50,
-      });
-
-      // Then add floating drift — bigger movement so it's obvious
+      gsap.set(logo, { xPercent: -50, yPercent: -50, x: 0, y: 0 });
       gsap.to(logo, {
-        x: `+=${gsap.utils.random(-50, 50)}`,
-        y: `+=${gsap.utils.random(-40, 40)}`,
-        rotation: gsap.utils.random(-15, 15),
-        duration: gsap.utils.random(2, 3.5),
+        x: gsap.utils.random(-20, 20),
+        y: gsap.utils.random(-16, 16),
+        rotation: gsap.utils.random(-8, 8),
+        duration: gsap.utils.random(2.5, 4),
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
         delay: index * 0.1,
       });
-
-      console.log(`[LowerLandingpage] Logo ${index} float animation started`);
     });
+  }
+
+  if (typeof window !== "undefined") {
+    window.addEventListener("load", () => ScrollTrigger.refresh(), { once: true });
+    setTimeout(() => ScrollTrigger.refresh(), 1500);
   }
 });
 

@@ -321,39 +321,46 @@ const problems = [
   },
 ];
 
+function animateIn(target: any, vars: gsap.TweenVars, scrollTriggerVars?: ScrollTrigger.Vars) {
+  if (!target) return;
+  const config: gsap.TweenVars = {
+    opacity: 1,
+    y: 0,
+    ease: "power2.out",
+    clearProps: "opacity,transform",
+    ...vars,
+  };
+  if (scrollTriggerVars) {
+    config.scrollTrigger = { toggleActions: "play none none none", ...scrollTriggerVars };
+  }
+  gsap.fromTo(
+    target,
+    { opacity: 0, y: vars.y ?? 40 },
+    config,
+  );
+}
+
 onMounted(() => {
-  // Hero animations
-  gsap.from(badgeRef.value, { opacity: 0, y: 30, duration: 0.8, ease: "power4.out" });
-  gsap.from(headline.value, { opacity: 0, y: 40, duration: 1, delay: 0.15, ease: "power4.out" });
-  gsap.from(subheadline.value, { opacity: 0, y: 40, duration: 0.8, delay: 0.3, ease: "power4.out" });
-  gsap.from(ctaGroup.value, { opacity: 0, y: 40, duration: 0.8, delay: 0.45, ease: "power4.out" });
+  // Hero animations (no scroll trigger — fire on mount)
+  animateIn(badgeRef.value, { y: 30, duration: 0.8, ease: "power4.out" });
+  animateIn(headline.value, { y: 40, duration: 1, delay: 0.15, ease: "power4.out" });
+  animateIn(subheadline.value, { y: 40, duration: 0.8, delay: 0.3, ease: "power4.out" });
+  animateIn(ctaGroup.value, { y: 40, duration: 0.8, delay: 0.45, ease: "power4.out" });
 
   // Stats animations
-  gsap.from(statsBadge.value, {
-    opacity: 0, y: 30, duration: 0.8,
-    scrollTrigger: { trigger: statsSection.value, start: "top 80%" },
-  });
-  gsap.from(statsHeadline.value, {
-    opacity: 0, y: 40, duration: 1,
-    scrollTrigger: { trigger: statsSection.value, start: "top 75%" },
-  });
-  gsap.from(statsGrid.value?.children, {
-    opacity: 0, y: 60, duration: 0.8, stagger: 0.15,
-    scrollTrigger: { trigger: statsGrid.value, start: "top 80%" },
-  });
+  animateIn(statsBadge.value, { y: 30, duration: 0.8 }, { trigger: statsSection.value, start: "top 80%" });
+  animateIn(statsHeadline.value, { y: 40, duration: 1 }, { trigger: statsSection.value, start: "top 75%" });
+  animateIn(statsGrid.value?.children, { y: 60, duration: 0.8, stagger: 0.15 }, { trigger: statsGrid.value, start: "top 80%" });
 
   // Problems animations
-  gsap.from(probBadge.value, {
-    opacity: 0, y: 30, duration: 0.8,
-    scrollTrigger: { trigger: probBadge.value, start: "top 85%" },
-  });
-  gsap.from(probHeadline.value, {
-    opacity: 0, y: 40, duration: 1,
-    scrollTrigger: { trigger: probHeadline.value, start: "top 80%" },
-  });
-  gsap.from(probGrid.value?.children, {
-    opacity: 0, y: 50, duration: 0.8, stagger: 0.12,
-    scrollTrigger: { trigger: probGrid.value, start: "top 80%" },
-  });
+  animateIn(probBadge.value, { y: 30, duration: 0.8 }, { trigger: probBadge.value, start: "top 85%" });
+  animateIn(probHeadline.value, { y: 40, duration: 1 }, { trigger: probHeadline.value, start: "top 80%" });
+  animateIn(probGrid.value?.children, { y: 50, duration: 0.8, stagger: 0.12 }, { trigger: probGrid.value, start: "top 80%" });
+
+  // Recalibrate ScrollTrigger after images/fonts settle to prevent triggers from sitting at stale positions
+  if (typeof window !== "undefined") {
+    window.addEventListener("load", () => ScrollTrigger.refresh(), { once: true });
+    setTimeout(() => ScrollTrigger.refresh(), 1500);
+  }
 });
 </script>

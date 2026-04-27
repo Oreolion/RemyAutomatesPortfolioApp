@@ -145,24 +145,40 @@ const web3Features = [
   },
 ];
 
+function animateIn(target: any, vars: gsap.TweenVars, scrollTriggerVars?: ScrollTrigger.Vars) {
+  if (!target) return;
+  const config: gsap.TweenVars = {
+    opacity: 1,
+    y: 0,
+    ease: "power2.out",
+    clearProps: "opacity,transform",
+    ...vars,
+  };
+  if (scrollTriggerVars) {
+    config.scrollTrigger = { toggleActions: "play none none none", ...scrollTriggerVars };
+  }
+  gsap.fromTo(target, { opacity: 0, y: vars.y ?? 30 }, config);
+}
+
 onMounted(() => {
-  // Headers animate FROM invisible
-  gsap.from(badge.value, { opacity: 0, y: -20, duration: 0.6, ease: "power2.out" });
-  gsap.from(heading.value, { opacity: 0, y: 30, duration: 0.8, delay: 0.2, ease: "power2.out" });
-  gsap.from(subheading.value, { opacity: 0, y: 30, duration: 0.8, delay: 0.4, ease: "power2.out" });
+  animateIn(badge.value, { y: -20, duration: 0.6 });
+  animateIn(heading.value, { y: 30, duration: 0.8, delay: 0.2 });
+  animateIn(subheading.value, { y: 30, duration: 0.8, delay: 0.4 });
 
   if (mainGrid.value) {
-    gsap.from(mainGrid.value.children, {
-      opacity: 0, y: 50, duration: 0.8, stagger: 0.1, ease: "power2.out",
-      scrollTrigger: { trigger: mainGrid.value, start: "top bottom-=100", toggleActions: "play none none reverse" },
-    });
+    animateIn(
+      mainGrid.value.children,
+      { y: 50, duration: 0.8, stagger: 0.1 },
+      { trigger: mainGrid.value, start: "top bottom-=100" },
+    );
   }
 
   if (web3Grid.value) {
-    gsap.from(web3Grid.value.children, {
-      opacity: 0, y: 50, duration: 0.8, stagger: 0.12, ease: "power2.out",
-      scrollTrigger: { trigger: web3Grid.value, start: "top bottom-=50", toggleActions: "play none none reverse" },
-    });
+    animateIn(
+      web3Grid.value.children,
+      { y: 50, duration: 0.8, stagger: 0.12 },
+      { trigger: web3Grid.value, start: "top bottom-=50" },
+    );
   }
 });
 </script>
