@@ -17,7 +17,7 @@
       </div>
 
       <div class="max-w-6xl mx-auto text-center relative z-10 pt-20">
-        <div class="mb-8 opacity-0" ref="badgeRef">
+        <div ref="badgeRef">
           <span class="badge">
             <span class="w-1.5 h-1.5 bg-cyan-glow rounded-full animate-pulse" />
             AI Automation Agency
@@ -26,7 +26,7 @@
 
         <h1
           ref="headline"
-          class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] sm:leading-[0.95] tracking-tight mb-6 sm:mb-8 opacity-0"
+          class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] sm:leading-[0.95] tracking-tight mb-6 sm:mb-8"
         >
           <span class="text-white">Automate the</span>
           <br />
@@ -35,7 +35,7 @@
 
         <p
           ref="subheadline"
-          class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-slate-400 leading-relaxed mb-8 sm:mb-10 px-2 sm:px-0 opacity-0"
+          class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-slate-400 leading-relaxed mb-8 sm:mb-10 px-2 sm:px-0"
         >
           Save 10+ hours every week. We help teams automate
           <span class="text-slate-200 font-medium">80% of repetitive</span>
@@ -44,7 +44,7 @@
 
         <div
           ref="ctaGroup"
-          class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full px-4 sm:px-0 opacity-0"
+          class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full px-4 sm:px-0"
         >
           <NuxtLink to="/form" class="btn-primary text-sm sm:text-base px-6 sm:px-8 py-3.5 sm:py-4 w-full sm:w-auto justify-center">
             <span class="w-2 h-2 bg-void rounded-full" />
@@ -74,15 +74,15 @@
     <!-- Stats Section -->
     <section ref="statsSection" class="section-padding relative overflow-hidden">
       <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-glow/20 to-transparent" />
-      
+
       <div class="container-tight text-center">
-        <div class="mb-4 opacity-0" ref="statsBadge">
+        <div ref="statsBadge">
           <span class="badge">By the numbers</span>
         </div>
 
         <h2
           ref="statsHeadline"
-          class="text-2xl sm:text-3xl md:text-5xl font-bold max-w-3xl mx-auto leading-tight mb-12 sm:mb-16 opacity-0"
+          class="text-2xl sm:text-3xl md:text-5xl font-bold max-w-3xl mx-auto leading-tight mb-12 sm:mb-16"
         >
           Every day,
           <span class="text-gradient">billions of hours</span>
@@ -113,9 +113,9 @@
     <!-- Problems / Solutions Section -->
     <section class="section-padding relative overflow-hidden">
       <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-violet-glow/20 to-transparent" />
-      
+
       <div class="container-tight text-center">
-        <div class="mb-4 opacity-0" ref="probBadge">
+        <div ref="probBadge">
           <span class="badge border-violet-glow/20 bg-violet-dim text-violet-glow">
             Don't let your business fall behind
           </span>
@@ -123,7 +123,7 @@
 
         <h2
           ref="probHeadline"
-          class="text-2xl sm:text-3xl md:text-5xl font-bold max-w-3xl mx-auto leading-tight mb-12 sm:mb-16 opacity-0"
+          class="text-2xl sm:text-3xl md:text-5xl font-bold max-w-3xl mx-auto leading-tight mb-12 sm:mb-16"
         >
           It's 2025. Time to say goodbye to
           <span class="text-gradient">yesterday's headaches.</span>
@@ -139,7 +139,7 @@
             class="group relative p-6 sm:p-8 rounded-2xl bg-[#13131f] border border-white/[0.12] text-left hover:border-cyan-glow/40 transition-colors shadow-lg shadow-black/20"
           >
             <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-glow/10 to-violet-glow/10 border border-white/[0.06] flex items-center justify-center mb-6 group-hover:from-cyan-glow/20 group-hover:to-violet-glow/20 transition-all">
-              <NuxtImg :src="item.icon" class="w-6 h-6 object-contain opacity-80" />
+              <NuxtImg :src="item.icon" class="w-6 h-6 object-contain opacity-80" loading="lazy" />
             </div>
             <h3 class="text-xl font-semibold text-white mb-3">{{ item.header }}</h3>
             <p class="text-slate-400 text-sm leading-relaxed">{{ item.text }}</p>
@@ -162,6 +162,115 @@ import FeaturesSection from "~/components/FeaturesSection.vue";
 import LogoSlider from "~/components/LogoSlider.vue";
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Page SEO
+useSeoMeta({
+  title: "AI Automation Agency",
+  description:
+    "Save 10+ hours every week. Remy Automates helps teams automate 80% of repetitive sales, support, and admin tasks with AI-powered workflows and intelligent integrations.",
+  ogTitle: "Remy Automates — AI Automation Agency",
+  ogDescription:
+    "Save 10+ hours every week. We help teams automate 80% of repetitive tasks with AI-powered workflows.",
+  ogUrl: "https://remyautomates.com",
+  twitterTitle: "Remy Automates — AI Automation Agency",
+  twitterDescription:
+    "Save 10+ hours every week with AI-powered automation workflows.",
+});
+
+// JSON-LD Structured Data
+useHead({
+  script: [
+    {
+      type: "application/ld+json",
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            name: "Remy Automates",
+            url: "https://remyautomates.com",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: "https://remyautomates.com/?q={search_term_string}",
+              "query-input": "required name=search_term_string",
+            },
+          },
+          {
+            "@type": "Organization",
+            name: "Remy Automates",
+            url: "https://remyautomates.com",
+            logo: "https://remyautomates.com/assets/icon/og-image.png",
+            sameAs: [
+              "https://twitter.com/remyautomates",
+              "https://linkedin.com/company/remyautomates",
+            ],
+            contactPoint: {
+              "@type": "ContactPoint",
+              email: "ra@remyautomates.com",
+              contactType: "sales",
+              availableLanguage: ["English"],
+            },
+            description:
+              "AI automation agency helping teams save 10+ hours every week by automating repetitive tasks with AI-powered workflows and intelligent integrations.",
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://remyautomates.com/#webpage",
+            url: "https://remyautomates.com",
+            name: "Remy Automates — AI Automation Agency",
+            isPartOf: { "@id": "https://remyautomates.com/#website" },
+            about: { "@id": "https://remyautomates.com/#organization" },
+            primaryImageOfPage: {
+              "@type": "ImageObject",
+              url: "https://remyautomates.com/assets/icon/og-image.png",
+            },
+            description:
+              "Save 10+ hours every week. We help teams automate 80% of repetitive sales, support, and admin tasks with AI-powered workflows.",
+          },
+          {
+            "@type": "Service",
+            name: "AI Automation Services",
+            provider: { "@id": "https://remyautomates.com/#organization" },
+            areaServed: "Worldwide",
+            hasOfferCatalog: {
+              "@type": "OfferCatalog",
+              name: "Automation Services",
+              itemListElement: [
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Business Process Automation",
+                    description:
+                      "Automate repetitive tasks, data entry, and manual workflows.",
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "AI Integration",
+                    description:
+                      "Connect AI tools like ChatGPT, Claude, and Gemini to your workflow.",
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Web3 & Blockchain Solutions",
+                    description:
+                      "Onchain AI agents, token deployments, and decentralized applications.",
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      }),
+    },
+  ],
+});
 
 const heroSection = ref<HTMLElement>();
 const badgeRef = ref<HTMLElement>();
@@ -213,12 +322,11 @@ const problems = [
 ];
 
 onMounted(() => {
-  const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-
-  tl.to(badgeRef.value, { opacity: 1, y: 0, duration: 0.8 })
-    .to(headline.value, { opacity: 1, y: 0, duration: 1 }, "-=0.5")
-    .to(subheadline.value, { opacity: 1, y: 0, duration: 0.8 }, "-=0.6")
-    .to(ctaGroup.value, { opacity: 1, y: 0, duration: 0.8 }, "-=0.5");
+  // Hero animations
+  gsap.from(badgeRef.value, { opacity: 0, y: 30, duration: 0.8, ease: "power4.out" });
+  gsap.from(headline.value, { opacity: 0, y: 40, duration: 1, delay: 0.15, ease: "power4.out" });
+  gsap.from(subheadline.value, { opacity: 0, y: 40, duration: 0.8, delay: 0.3, ease: "power4.out" });
+  gsap.from(ctaGroup.value, { opacity: 0, y: 40, duration: 0.8, delay: 0.45, ease: "power4.out" });
 
   // Stats animations
   gsap.from(statsBadge.value, {

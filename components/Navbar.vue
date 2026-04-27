@@ -16,6 +16,8 @@
             width="20"
             src="/assets/logos/raautologo.webp"
             class="relative z-10 rounded"
+            loading="eager"
+            decoding="async"
           />
         </div>
         <span class="font-bold text-base tracking-tight text-white group-hover:text-cyan-glow transition-colors">
@@ -46,6 +48,8 @@
 
       <button
         @click="toggleMobileMenu"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
         class="md:hidden relative w-10 h-10 flex items-center justify-center rounded-xl bg-white/[0.04] border border-white/[0.06]"
       >
         <div class="flex flex-col gap-1.5 w-5">

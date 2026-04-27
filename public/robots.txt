@@ -1,1 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /form?*
+Disallow: /api/
+Disallow: /_nuxt/
+Disallow: /.well-known/
 
+Sitemap: https://remyautomates.com/sitemap.xml
+
+# Crawl-delay for bots that respect it
+Crawl-delay: 1

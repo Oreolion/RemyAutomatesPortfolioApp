@@ -17,17 +17,16 @@
           <p class="text-base sm:text-lg text-slate-400">Here are some real world use cases we deliver.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-16 sm:mb-24">
+        <div ref="automationsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-16 sm:mb-24">
           <div
             v-for="(item, index) in automations"
             :key="index"
-            class="group relative p-5 sm:p-6 rounded-2xl bg-[#13131f] border border-white/[0.12] hover:border-cyan-glow/40 transition-all duration-500 shadow-lg shadow-black/20"
-            :ref="(el) => { if (el) automationRefs[index] = el; }"
+            class="automation-card group relative p-5 sm:p-6 rounded-2xl bg-[#13131f] border border-white/[0.12] hover:border-cyan-glow/40 transition-all duration-500 shadow-lg shadow-black/20"
           >
             <div class="absolute inset-0 bg-gradient-to-br from-cyan-glow/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
             <div class="relative z-10">
               <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-glow/15 to-violet-glow/15 border border-white/[0.1] flex items-center justify-center mb-4">
-                <NuxtImg :src="item.icon" class="w-5 h-5 object-contain" />
+                <NuxtImg :src="item.icon" class="w-5 h-5 object-contain" loading="lazy" decoding="async" />
               </div>
               <h3 class="font-semibold text-white mb-2">{{ item.title }}</h3>
               <p class="text-slate-400 text-sm leading-relaxed">{{ item.description }}</p>
@@ -50,8 +49,32 @@
 
           <!-- Floating Tools Network -->
           <div ref="toolsContainer" class="relative mx-auto h-[320px] sm:h-[380px] md:h-[440px] max-w-[640px]">
+            <!-- SVG Connection Lines -->
+            <svg class="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible">
+              <defs>
+                <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.3" />
+                  <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.3" />
+                </linearGradient>
+              </defs>
+              <line
+                v-for="(pos, i) in logoPositions"
+                :key="`line-${i}`"
+                :x1="centerX"
+                :y1="centerY"
+                :x2="pos.x"
+                :y2="pos.y"
+                stroke="url(#lineGrad)"
+                stroke-width="1"
+                stroke-dasharray="4 4"
+                opacity="0.4"
+              />
+            </svg>
+
             <!-- Center Hub -->
-            <div class="center-hub absolute top-1/2 left-1/2 z-20 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-cyan-glow/30 to-violet-glow/30 border border-cyan-glow/40 flex items-center justify-center -translate-x-1/2 -translate-y-1/2">
+            <div
+              class="absolute top-1/2 left-1/2 z-20 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-cyan-glow/30 to-violet-glow/30 border border-cyan-glow/40 flex items-center justify-center -translate-x-1/2 -translate-y-1/2"
+            >
               <div class="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-cyan-glow to-violet-glow flex items-center justify-center shadow-glow-cyan animate-pulse-glow">
                 <svg class="w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6 text-void" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -59,15 +82,18 @@
               </div>
             </div>
 
-            <!-- Floating Logos -->
+            <!-- Floating Logos — inline style for SSR positioning, GSAP adds float animation client-side -->
             <div
               v-for="(logo, index) in allLogos"
               :key="index"
-              class="logo-item absolute z-10 flex items-center justify-center rounded-xl bg-[#13131f] border border-white/[0.15] shadow-lg shadow-black/40"
+              class="logo-float absolute z-10 flex items-center justify-center rounded-xl bg-[#13131f] border border-white/[0.15] shadow-lg shadow-black/40"
               :class="logo.size === 'md' ? 'w-12 h-12 sm:w-14 sm:h-14 p-2' : 'w-10 h-10 sm:w-12 sm:h-12 p-1.5'"
-              :ref="(el) => { if (el) logoRefs[index] = el; }"
+              :style="{
+                left: logoPositions[index].x + 'px',
+                top: logoPositions[index].y + 'px',
+              }"
             >
-              <img :src="logo.src" :alt="logo.name" class="w-full h-full object-contain" />
+              <img :src="logo.src" :alt="logo.name" class="w-full h-full object-contain" loading="lazy" decoding="async" />
             </div>
           </div>
 
@@ -84,16 +110,12 @@
     </section>
 
     <!-- CTA Section -->
-    <section
-      id="contact"
-      class="section-padding relative overflow-hidden"
-    >
+    <section id="contact" class="section-padding relative overflow-hidden">
       <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-violet-glow/30 to-transparent" />
       <div class="absolute inset-0 bg-gradient-to-b from-violet-glow/5 via-transparent to-transparent pointer-events-none" />
 
       <div class="container-tight relative z-10">
         <div class="relative rounded-3xl overflow-hidden">
-          <!-- Background gradient -->
           <div class="absolute inset-0 bg-gradient-to-br from-surface via-surface to-void-light" />
           <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-cyan-glow/10 to-violet-glow/10 rounded-full blur-[100px] pointer-events-none" />
           <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-violet-glow/5 rounded-full blur-[80px] pointer-events-none" />
@@ -102,11 +124,7 @@
             <div class="flex items-center justify-center order-1 md:order-1">
               <div class="relative w-full max-w-[200px] sm:max-w-xs aspect-square">
                 <div class="absolute inset-0 bg-gradient-to-br from-cyan-glow/20 to-violet-glow/20 rounded-3xl blur-2xl" />
-                <img
-                  src="/assets/images/pixeltrue-contact.png"
-                  alt="Let's connect"
-                  class="relative z-10 w-full h-full object-contain drop-shadow-2xl"
-                />
+                <img src="/assets/images/pixeltrue-contact.png" alt="Let's connect" class="relative z-10 w-full h-full object-contain drop-shadow-2xl" loading="lazy" decoding="async" />
               </div>
             </div>
 
@@ -151,18 +169,18 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const toolsContainer = ref<HTMLElement | null>(null);
-const logoRefs = ref<HTMLElement[]>([]);
-const automationRefs = ref<HTMLElement[]>([]);
+const automationsGrid = ref<HTMLElement | null>(null);
+
+const centerX = 320;
+const centerY = 220;
 
 const allLogos = [
-  // AI & Automation tools
   { name: "ChatGPT", src: "/assets/images/chatgpt-icon.webp", size: "md" },
   { name: "Claude", src: "/assets/images/t_claude-ai9117.logowik.com.webp", size: "md" },
   { name: "Gemini", src: "/assets/images/google-gemini-icon.svg", size: "md" },
   { name: "Zapier", src: "/assets/images/Zapier_logo.jpg", size: "md" },
   { name: "ElevenLabs", src: "/assets/images/9trrmnj2sj8-logo-logo.svg", size: "md" },
   { name: "Airtable", src: "/assets/images/airtable-vector-logo-2022-small.png", size: "md" },
-  // Social & Communication
   { name: "Slack", src: "/assets/logos/slack-icon.svg", size: "sm" },
   { name: "Gmail", src: "/assets/logos/gmail-icon.svg", size: "sm" },
   { name: "LinkedIn", src: "/assets/logos/linkedin-app-icon.svg", size: "sm" },
@@ -173,52 +191,69 @@ const allLogos = [
   { name: "Facebook", src: "/assets/logos/facebook-square-icon.svg", size: "sm" },
 ];
 
-onMounted(() => {
-  // Animate automation cards
-  gsap.from(automationRefs.value, {
-    y: 50,
-    opacity: 0,
-    duration: 0.8,
-    stagger: 0.1,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: automationRefs.value[0]?.parentElement,
-      start: "top 85%",
-    },
-  });
-
-  // Position logos in a circle around the center, then float them
+// Deterministic positions — calculated once, used for both inline styles and GSAP
+const logoPositions = allLogos.map((_, i) => {
   const count = allLogos.length;
-  const radius = 110; // distance from center in px
+  const angle = (i / count) * Math.PI * 2 - Math.PI / 2;
+  const radius = 110 + ((i % 3) * 12);
+  return {
+    x: centerX + Math.cos(angle) * radius,
+    y: centerY + Math.sin(angle) * radius,
+  };
+});
 
-  logoRefs.value.forEach((logo, index) => {
-    if (!logo) return;
-    const angle = (index / count) * Math.PI * 2;
-    const startX = Math.cos(angle) * radius;
-    const startY = Math.sin(angle) * radius;
+onMounted(() => {
+  console.log("[LowerLandingpage] onMounted fired");
 
-    // Set initial position: centered, then offset by circle radius
-    gsap.set(logo, {
-      left: "50%",
-      top: "50%",
-      xPercent: -50,
-      yPercent: -50,
-      x: startX,
-      y: startY,
+  // Animate automation cards using querySelectorAll (no fragile v-for refs)
+  if (automationsGrid.value) {
+    const cards = automationsGrid.value.querySelectorAll(".automation-card");
+    console.log("[LowerLandingpage] Found automation cards:", cards.length);
+    if (cards.length > 0) {
+      gsap.from(cards, {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: automationsGrid.value,
+          start: "top 85%",
+        },
+      });
+    }
+  }
+
+  // Float the tool logos using querySelectorAll
+  if (toolsContainer.value) {
+    const logos = toolsContainer.value.querySelectorAll(".logo-float");
+    console.log("[LowerLandingpage] Found floating logos:", logos.length);
+
+    logos.forEach((logo, index) => {
+      const pos = logoPositions[index];
+      if (!pos) return;
+
+      // First center the logo with GSAP (cleaner than inline transform)
+      gsap.set(logo, {
+        xPercent: -50,
+        yPercent: -50,
+      });
+
+      // Then add floating drift — bigger movement so it's obvious
+      gsap.to(logo, {
+        x: `+=${gsap.utils.random(-50, 50)}`,
+        y: `+=${gsap.utils.random(-40, 40)}`,
+        rotation: gsap.utils.random(-15, 15),
+        duration: gsap.utils.random(2, 3.5),
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: index * 0.1,
+      });
+
+      console.log(`[LowerLandingpage] Logo ${index} float animation started`);
     });
-
-    // Floating animation — colliding/communicating feel
-    gsap.to(logo, {
-      x: `+=random(-50, 50)`,
-      y: `+=random(-45, 45)`,
-      rotation: `random(-15, 15)`,
-      duration: `random(2, 3.5)`,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      delay: index * 0.1,
-    });
-  });
+  }
 });
 
 const automations = [

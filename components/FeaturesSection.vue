@@ -5,20 +5,20 @@
     <div class="container-tight relative z-10">
       <!-- Header -->
       <div class="text-center mb-20">
-        <div ref="badge" class="mb-6 opacity-0">
+        <div ref="badge">
           <span class="badge">
             <span class="w-1.5 h-1.5 bg-cyan-glow rounded-full animate-pulse" />
             We're Remy Automates
           </span>
         </div>
 
-        <h2 ref="heading" class="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-6 opacity-0">
+        <h2 ref="heading" class="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-6">
           We bring your company
           <br class="hidden sm:block" />
           <span class="text-gradient">into the AI age.</span>
         </h2>
 
-        <p ref="subheading" class="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto px-2 sm:px-0 opacity-0">
+        <p ref="subheading" class="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto px-2 sm:px-0">
           We're in the business of boosting human productivity,
           <span class="text-white font-medium">not</span> replacing it.
         </p>
@@ -35,7 +35,7 @@
 
           <div class="relative z-10">
             <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-glow/15 to-violet-glow/15 border border-white/[0.1] flex items-center justify-center mb-5">
-              <NuxtImg :src="feature.icon" class="w-6 h-6 object-contain" />
+              <NuxtImg :src="feature.icon" class="w-6 h-6 object-contain" loading="lazy" decoding="async" />
             </div>
             <h3 class="text-lg font-semibold text-white mb-2">{{ feature.title }}</h3>
             <p class="text-slate-400 text-sm leading-relaxed">{{ feature.description }}</p>
@@ -69,7 +69,7 @@
 
             <div class="relative z-10">
               <div class="w-full h-32 rounded-xl bg-white/[0.05] border border-white/[0.08] mb-5 overflow-hidden flex items-center justify-center">
-                <NuxtImg :src="feature.image" class="w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700" />
+                <NuxtImg :src="feature.image" class="w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700" loading="lazy" decoding="async" />
               </div>
               <h3 class="text-lg font-semibold text-white mb-2">{{ feature.title }}</h3>
               <p class="text-slate-400 text-sm leading-relaxed">{{ feature.description }}</p>
@@ -146,6 +146,7 @@ const web3Features = [
 ];
 
 onMounted(() => {
+  // Headers animate FROM invisible
   gsap.from(badge.value, { opacity: 0, y: -20, duration: 0.6, ease: "power2.out" });
   gsap.from(heading.value, { opacity: 0, y: 30, duration: 0.8, delay: 0.2, ease: "power2.out" });
   gsap.from(subheading.value, { opacity: 0, y: 30, duration: 0.8, delay: 0.4, ease: "power2.out" });
