@@ -49,53 +49,25 @@
           </div>
 
           <!-- Floating Tools Network -->
-          <div class="relative mx-auto" style="max-width: 700px;">
-            <div ref="toolsContainer" class="floating-tools relative h-[360px] sm:h-[420px] md:h-[480px] mb-10">
-              <!-- SVG Connection Lines -->
-              <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="rgba(0,240,255,0.3)" />
-                    <stop offset="100%" stop-color="rgba(167,139,250,0.3)" />
-                  </linearGradient>
-                </defs>
-                <!-- Lines from center to each logo position -->
-                <line
-                  v-for="(pos, i) in logoPositions"
-                  :key="`line-${i}`"
-                  :x1="centerX"
-                  :y1="centerY"
-                  :x2="pos.x"
-                  :y2="pos.y"
-                  stroke="url(#lineGrad)"
-                  stroke-width="1"
-                  stroke-dasharray="4 4"
-                  opacity="0.4"
-                />
-              </svg>
-
-              <!-- Center Hub -->
-              <div
-                class="absolute z-20 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-cyan-glow/30 to-violet-glow/30 border border-cyan-glow/40 flex items-center justify-center"
-                :style="{ top: `calc(50% - 32px)`, left: `calc(50% - 32px)` }"
-              >
-                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-cyan-glow to-violet-glow flex items-center justify-center shadow-glow-cyan animate-pulse-glow">
-                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-void" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
+          <div ref="toolsContainer" class="relative mx-auto h-[320px] sm:h-[380px] md:h-[440px] max-w-[640px]">
+            <!-- Center Hub -->
+            <div class="center-hub absolute top-1/2 left-1/2 z-20 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-cyan-glow/30 to-violet-glow/30 border border-cyan-glow/40 flex items-center justify-center -translate-x-1/2 -translate-y-1/2">
+              <div class="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-cyan-glow to-violet-glow flex items-center justify-center shadow-glow-cyan animate-pulse-glow">
+                <svg class="w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6 text-void" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
               </div>
+            </div>
 
-              <!-- Floating Logos -->
-              <div
-                v-for="(logo, index) in allLogos"
-                :key="index"
-                class="logo-float absolute z-10 flex items-center justify-center rounded-xl bg-[#13131f] border border-white/[0.15] shadow-lg shadow-black/40 p-2"
-                :style="getLogoSize(logo.size)"
-                :ref="(el) => { if (el) logoRefs[index] = el; }"
-              >
-                <img :src="logo.src" :alt="logo.name" class="w-full h-full object-contain" />
-              </div>
+            <!-- Floating Logos -->
+            <div
+              v-for="(logo, index) in allLogos"
+              :key="index"
+              class="logo-item absolute z-10 flex items-center justify-center rounded-xl bg-[#13131f] border border-white/[0.15] shadow-lg shadow-black/40"
+              :class="logo.size === 'md' ? 'w-12 h-12 sm:w-14 sm:h-14 p-2' : 'w-10 h-10 sm:w-12 sm:h-12 p-1.5'"
+              :ref="(el) => { if (el) logoRefs[index] = el; }"
+            >
+              <img :src="logo.src" :alt="logo.name" class="w-full h-full object-contain" />
             </div>
           </div>
 
@@ -172,7 +144,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -181,9 +153,6 @@ gsap.registerPlugin(ScrollTrigger);
 const toolsContainer = ref<HTMLElement | null>(null);
 const logoRefs = ref<HTMLElement[]>([]);
 const automationRefs = ref<HTMLElement[]>([]);
-
-const centerX = 350; // half of max-width 700
-const centerY = 180; // approximate half of height (will be responsive)
 
 const allLogos = [
   // AI & Automation tools
@@ -204,30 +173,6 @@ const allLogos = [
   { name: "Facebook", src: "/assets/logos/facebook-square-icon.svg", size: "sm" },
 ];
 
-const getLogoSize = (size: string) => {
-  if (size === "md") {
-    return { width: "52px", height: "52px" };
-  }
-  return { width: "44px", height: "44px" };
-};
-
-// Calculate initial circular positions for logos
-const logoPositions = computed(() => {
-  const positions = [];
-  const count = allLogos.length;
-  const baseRadius = 110;
-  for (let i = 0; i < count; i++) {
-    const angle = (i / count) * Math.PI * 2;
-    // Add some randomness to radius so it's not a perfect circle
-    const radius = baseRadius + (Math.random() * 40 - 20);
-    positions.push({
-      x: centerX + Math.cos(angle) * radius,
-      y: centerY + Math.sin(angle) * radius,
-    });
-  }
-  return positions;
-});
-
 onMounted(() => {
   // Animate automation cards
   gsap.from(automationRefs.value, {
@@ -242,46 +187,38 @@ onMounted(() => {
     },
   });
 
-  // Position logos initially in a circle, then animate them floating/colliding
+  // Position logos in a circle around the center, then float them
+  const count = allLogos.length;
+  const radius = 110; // distance from center in px
+
   logoRefs.value.forEach((logo, index) => {
     if (!logo) return;
-    const pos = logoPositions.value[index];
-    // Set initial position
+    const angle = (index / count) * Math.PI * 2;
+    const startX = Math.cos(angle) * radius;
+    const startY = Math.sin(angle) * radius;
+
+    // Set initial position: centered, then offset by circle radius
     gsap.set(logo, {
-      left: pos.x,
-      top: pos.y,
+      left: "50%",
+      top: "50%",
       xPercent: -50,
       yPercent: -50,
+      x: startX,
+      y: startY,
     });
 
-    // Floating animation — tighter range for more collision/communication feel
+    // Floating animation — colliding/communicating feel
     gsap.to(logo, {
-      x: `random(-60, 60)`,
-      y: `random(-50, 50)`,
-      rotation: `random(-12, 12)`,
-      scale: `random(0.92, 1.08)`,
+      x: `+=random(-50, 50)`,
+      y: `+=random(-45, 45)`,
+      rotation: `random(-15, 15)`,
       duration: `random(2, 3.5)`,
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut",
-      delay: index * 0.12,
+      delay: index * 0.1,
     });
   });
-
-  // Animate connection lines opacity
-  const lines = toolsContainer.value?.querySelectorAll("line");
-  if (lines) {
-    gsap.from(lines, {
-      opacity: 0,
-      duration: 1,
-      stagger: 0.05,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: toolsContainer.value,
-        start: "top 80%",
-      },
-    });
-  }
 });
 
 const automations = [
@@ -347,21 +284,3 @@ const automations = [
   },
 ];
 </script>
-
-<style scoped>
-.floating-tools {
-  margin: 2rem auto;
-}
-
-@media (max-width: 640px) {
-  .floating-tools {
-    height: 320px !important;
-  }
-}
-
-@media (max-width: 380px) {
-  .floating-tools {
-    height: 280px !important;
-  }
-}
-</style>

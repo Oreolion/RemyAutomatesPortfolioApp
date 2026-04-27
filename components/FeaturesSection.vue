@@ -1,10 +1,6 @@
 <template>
   <section id="solutions" class="section-padding relative overflow-hidden">
     <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-glow/20 to-transparent" />
-    
-    <!-- Ambient glow -->
-    <div class="absolute top-1/3 -right-64 w-[500px] h-[500px] bg-violet-glow/5 rounded-full blur-[120px] pointer-events-none" />
-    <div class="absolute bottom-1/4 -left-64 w-[400px] h-[400px] bg-cyan-glow/5 rounded-full blur-[120px] pointer-events-none" />
 
     <div class="container-tight relative z-10">
       <!-- Header -->
@@ -28,21 +24,18 @@
         </p>
       </div>
 
-      <!-- Main Features Bento Grid -->
+      <!-- Main Features Grid -->
       <div ref="mainGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
         <div
           v-for="(feature, i) in mainFeatures"
           :key="i"
-          :class="[
-            'group relative p-7 rounded-2xl glass glow-border overflow-hidden transition-all duration-500',
-            feature.span || '',
-          ]"
+          class="group relative p-5 sm:p-7 rounded-2xl bg-[#13131f] border border-white/[0.12] hover:border-cyan-glow/40 transition-all duration-500 shadow-lg shadow-black/20"
         >
-          <div class="absolute inset-0 bg-gradient-to-br from-cyan-glow/[0.02] to-violet-glow/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          
+          <div class="absolute inset-0 bg-gradient-to-br from-cyan-glow/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
+
           <div class="relative z-10">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-glow/10 to-violet-glow/10 border border-white/[0.06] flex items-center justify-center mb-5 group-hover:from-cyan-glow/20 group-hover:to-violet-glow/20 transition-all">
-              <NuxtImg :src="feature.icon" class="w-6 h-6 object-contain opacity-80" />
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-glow/15 to-violet-glow/15 border border-white/[0.1] flex items-center justify-center mb-5">
+              <NuxtImg :src="feature.icon" class="w-6 h-6 object-contain" />
             </div>
             <h3 class="text-lg font-semibold text-white mb-2">{{ feature.title }}</h3>
             <p class="text-slate-400 text-sm leading-relaxed">{{ feature.description }}</p>
@@ -70,13 +63,13 @@
           <div
             v-for="(feature, i) in web3Features"
             :key="i"
-            class="group relative p-5 sm:p-7 rounded-2xl glass overflow-hidden transition-all duration-500 hover:border-cyan-glow/30 shadow-lg shadow-black/20"
+            class="group relative p-5 sm:p-7 rounded-2xl bg-[#13131f] border border-white/[0.12] hover:border-cyan-glow/40 transition-all duration-500 shadow-lg shadow-black/20"
           >
-            <div class="absolute inset-0 bg-gradient-to-br from-violet-glow/[0.03] to-cyan-glow/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            
+            <div class="absolute inset-0 bg-gradient-to-br from-violet-glow/[0.05] to-cyan-glow/[0.05] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
+
             <div class="relative z-10">
-              <div class="w-full h-32 rounded-xl bg-white/[0.03] border border-white/[0.06] mb-5 overflow-hidden flex items-center justify-center">
-                <NuxtImg :src="feature.image" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" />
+              <div class="w-full h-32 rounded-xl bg-white/[0.05] border border-white/[0.08] mb-5 overflow-hidden flex items-center justify-center">
+                <NuxtImg :src="feature.image" class="w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700" />
               </div>
               <h3 class="text-lg font-semibold text-white mb-2">{{ feature.title }}</h3>
               <p class="text-slate-400 text-sm leading-relaxed">{{ feature.description }}</p>
