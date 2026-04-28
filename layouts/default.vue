@@ -32,25 +32,25 @@ import Navbar from "~/components/Navbar.vue";
               <a
                 href="mailto:ra@remyautomates.com"
                 rel="noopener"
-                class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center hover:border-cyan-glow/30 hover:bg-cyan-glow/5 transition-all group"
+                class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center hover:border-cyan-glow/30 hover:bg-cyan-glow/5 transition-all group"
               >
-                <NuxtImg height="18" width="18" src="/assets/logos/gmail-icon.svg" class="opacity-60 group-hover:opacity-100 transition-opacity" loading="lazy" decoding="async" />
+                <NuxtImg height="26" width="26" src="/assets/logos/gmail-icon.svg" class="w-6 h-6 sm:w-7 sm:h-7 opacity-60 group-hover:opacity-100 transition-opacity" loading="lazy" decoding="async" />
               </a>
               <a
                 href="https://linkedin.com/company/remyautomates"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center hover:border-cyan-glow/30 hover:bg-cyan-glow/5 transition-all group"
+                class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center hover:border-cyan-glow/30 hover:bg-cyan-glow/5 transition-all group"
               >
-                <NuxtImg height="18" width="18" src="/assets/logos/linkedin-app-icon.svg" class="opacity-60 group-hover:opacity-100 transition-opacity" loading="lazy" decoding="async" />
+                <NuxtImg height="26" width="26" src="/assets/logos/linkedin-app-icon.svg" class="w-6 h-6 sm:w-7 sm:h-7 opacity-60 group-hover:opacity-100 transition-opacity" loading="lazy" decoding="async" />
               </a>
               <a
                 href="https://twitter.com/remyautomates"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center hover:border-cyan-glow/30 hover:bg-cyan-glow/5 transition-all group"
+                class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center hover:border-cyan-glow/30 hover:bg-cyan-glow/5 transition-all group"
               >
-                <NuxtImg height="18" width="18" src="/assets/logos/follow-us-on-x-icon.svg" class="opacity-60 group-hover:opacity-100 transition-opacity" loading="lazy" decoding="async" />
+                <NuxtImg height="26" width="26" src="/assets/logos/follow-us-on-x-icon.svg" class="w-6 h-6 sm:w-7 sm:h-7 opacity-60 group-hover:opacity-100 transition-opacity" loading="lazy" decoding="async" />
               </a>
             </div>
           </div>

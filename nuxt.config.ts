@@ -13,10 +13,12 @@ export default defineNuxtConfig({
     pageTransition: { name: "page", mode: "out-in" },
   },
 
-  // Image optimization
+  // Image optimization. AVIF is dropped from build-time format because encoding
+  // is single-threaded and CPU-bound (~40s/image), pushing prerender past 3min.
+  // WebP gives ~95% of AVIF's savings at ~10% of the encode cost.
   image: {
-    quality: 80,
-    format: ["avif", "webp"],
+    quality: 75,
+    format: ["webp"],
     screens: {
       xs: 320,
       sm: 480,

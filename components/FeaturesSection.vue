@@ -34,8 +34,8 @@
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-glow/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
 
           <div class="relative z-10">
-            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-gradient-to-br from-cyan-glow/15 to-violet-glow/15 border border-white/[0.1] flex items-center justify-center mb-5">
-              <NuxtImg :src="feature.icon" class="w-9 h-9 sm:w-11 sm:h-11 object-contain" loading="lazy" decoding="async" />
+            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-gradient-to-br from-cyan-glow/15 to-violet-glow/15 border border-white/[0.1] flex items-center justify-center mb-5">
+              <NuxtImg :src="feature.icon" class="w-16 h-16 sm:w-20 sm:h-20 object-contain" loading="lazy" decoding="async" />
             </div>
             <h3 class="text-lg font-semibold text-white mb-2">{{ feature.title }}</h3>
             <p class="text-slate-400 text-sm leading-relaxed">{{ feature.description }}</p>
