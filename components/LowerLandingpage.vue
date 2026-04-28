@@ -25,8 +25,8 @@
           >
             <div class="absolute inset-0 bg-gradient-to-br from-cyan-glow/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
             <div class="relative z-10">
-              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-glow/15 to-violet-glow/15 border border-white/[0.1] flex items-center justify-center mb-4">
-                <NuxtImg :src="item.icon" class="w-5 h-5 object-contain" loading="lazy" decoding="async" />
+              <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg bg-gradient-to-br from-cyan-glow/15 to-violet-glow/15 border border-white/[0.1] flex items-center justify-center mb-4">
+                <NuxtImg :src="item.icon" class="w-8 h-8 sm:w-9 sm:h-9 object-contain" loading="lazy" decoding="async" />
               </div>
               <h3 class="font-semibold text-white mb-2">{{ item.title }}</h3>
               <p class="text-slate-400 text-sm leading-relaxed">{{ item.description }}</p>

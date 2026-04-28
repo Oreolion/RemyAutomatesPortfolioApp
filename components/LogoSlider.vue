@@ -51,14 +51,14 @@ import { gsap } from "gsap";
 const logoTrack = ref<HTMLElement | null>(null);
 
 const logos = [
-  { src: "/assets/images/chatgpt-icon.webp", alt: "ChatGPT", class: "h-8" },
-  { src: "/assets/images/9trrmnj2sj8-logo-logo.svg", alt: "ElevenLabs", class: "h-9" },
-  { src: "/assets/images/google-gemini-icon.svg", alt: "Google Gemini", class: "h-8" },
-  { src: "/assets/images/Zapier_logo.jpg", alt: "Zapier", class: "h-8" },
-  { src: "/assets/images/airtable-vector-logo-2022-small.png", alt: "Airtable", class: "h-8" },
-  { src: "/assets/images/t_claude-ai9117.logowik.com.webp", alt: "Claude", class: "h-8" },
-  { src: "/assets/images/images.jpeg", alt: "Make", class: "h-7" },
-  { src: "/assets/images/MAIN_Logo_-_Colored_-_Positive.jpg", alt: "Bardeen", class: "h-10" },
+  { src: "/assets/images/chatgpt-icon.webp", alt: "ChatGPT", class: "h-12 sm:h-14" },
+  { src: "/assets/images/9trrmnj2sj8-logo-logo.svg", alt: "ElevenLabs", class: "h-12 sm:h-14" },
+  { src: "/assets/images/google-gemini-icon.svg", alt: "Google Gemini", class: "h-12 sm:h-14" },
+  { src: "/assets/images/Zapier_logo.jpg", alt: "Zapier", class: "h-12 sm:h-14" },
+  { src: "/assets/images/airtable-vector-logo-2022-small.png", alt: "Airtable", class: "h-12 sm:h-14" },
+  { src: "/assets/images/t_claude-ai9117.logowik.com.webp", alt: "Claude", class: "h-12 sm:h-14" },
+  { src: "/assets/images/images.jpeg", alt: "Make", class: "h-11 sm:h-12" },
+  { src: "/assets/images/MAIN_Logo_-_Colored_-_Positive.jpg", alt: "Bardeen", class: "h-14 sm:h-16" },
 ];
 
 let animation: gsap.core.Tween | null = null;

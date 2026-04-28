@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx nuxi *)"
+      "Bash(npx nuxi *)",
+      "Read(//c/Users/HP240G~1/AppData/Local/Temp/claude/C--Users-HP-240-G9-Desktop-NuxtJSApps-RemyAutomatesPortfolioApp/d190f468-1f62-4311-89eb-22d63049c9fe/tasks/**)"
     ]
   }
 }
