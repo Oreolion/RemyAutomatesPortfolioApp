@@ -34,8 +34,8 @@
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-glow/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
 
           <div class="relative z-10">
-            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-gradient-to-br from-cyan-glow/15 to-violet-glow/15 border border-white/[0.1] flex items-center justify-center mb-5">
-              <NuxtImg :src="feature.icon" class="w-16 h-16 sm:w-20 sm:h-20 object-contain" loading="lazy" decoding="async" />
+            <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-2xl bg-gradient-to-br from-cyan-glow/15 to-violet-glow/15 border border-white/[0.1] flex items-center justify-center mb-5">
+              <NuxtImg :src="feature.icon" class="w-24 h-24 sm:w-28 sm:h-28 object-contain" loading="lazy" decoding="async" />
             </div>
             <h3 class="text-lg font-semibold text-white mb-2">{{ feature.title }}</h3>
             <p class="text-slate-400 text-sm leading-relaxed">{{ feature.description }}</p>
@@ -145,39 +145,42 @@ const web3Features = [
   },
 ];
 
-function animateIn(target: any, vars: gsap.TweenVars, scrollTriggerVars?: ScrollTrigger.Vars) {
+function slideIn(target: any, from: gsap.TweenVars, to: gsap.TweenVars, scrollTriggerVars?: ScrollTrigger.Vars) {
   if (!target) return;
   const config: gsap.TweenVars = {
     opacity: 1,
+    x: 0,
     y: 0,
-    ease: "power2.out",
+    ease: "power3.out",
     clearProps: "opacity,transform",
-    ...vars,
+    ...to,
   };
   if (scrollTriggerVars) {
     config.scrollTrigger = { toggleActions: "play none none none", ...scrollTriggerVars };
   }
-  gsap.fromTo(target, { opacity: 0, y: vars.y ?? 30 }, config);
+  gsap.fromTo(target, { opacity: 0, ...from }, config);
 }
 
 onMounted(() => {
-  animateIn(badge.value, { y: -20, duration: 0.6 });
-  animateIn(heading.value, { y: 30, duration: 0.8, delay: 0.2 });
-  animateIn(subheading.value, { y: 30, duration: 0.8, delay: 0.4 });
+  slideIn(badge.value, { y: -30 }, { duration: 0.7 });
+  slideIn(heading.value, { y: 50 }, { duration: 1, delay: 0.2 });
+  slideIn(subheading.value, { y: 40 }, { duration: 0.9, delay: 0.4 });
 
   if (mainGrid.value) {
-    animateIn(
+    slideIn(
       mainGrid.value.children,
-      { y: 50, duration: 0.8, stagger: 0.1 },
-      { trigger: mainGrid.value, start: "top bottom-=100" },
+      { x: -120 },
+      { duration: 0.9, stagger: 0.12 },
+      { trigger: mainGrid.value, start: "top 85%" },
     );
   }
 
   if (web3Grid.value) {
-    animateIn(
+    slideIn(
       web3Grid.value.children,
-      { y: 50, duration: 0.8, stagger: 0.12 },
-      { trigger: web3Grid.value, start: "top bottom-=50" },
+      { x: 120 },
+      { duration: 0.9, stagger: 0.15 },
+      { trigger: web3Grid.value, start: "top 85%" },
     );
   }
 });

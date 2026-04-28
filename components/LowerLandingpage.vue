@@ -25,8 +25,8 @@
           >
             <div class="absolute inset-0 bg-gradient-to-br from-cyan-glow/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
             <div class="relative z-10">
-              <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-gradient-to-br from-cyan-glow/15 to-violet-glow/15 border border-white/[0.1] flex items-center justify-center mb-4">
-                <NuxtImg :src="item.icon" class="w-16 h-16 sm:w-20 sm:h-20 object-contain" loading="lazy" decoding="async" />
+              <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-2xl bg-gradient-to-br from-cyan-glow/15 to-violet-glow/15 border border-white/[0.1] flex items-center justify-center mb-4">
+                <NuxtImg :src="item.icon" class="w-24 h-24 sm:w-28 sm:h-28 object-contain" loading="lazy" decoding="async" />
               </div>
               <h3 class="font-semibold text-white mb-2">{{ item.title }}</h3>
               <p class="text-slate-400 text-sm leading-relaxed">{{ item.description }}</p>
@@ -203,27 +203,30 @@ const logoPositions = allLogos.map((_, i) => {
 });
 
 onMounted(() => {
-  // Animate automation cards — fromTo with clearProps so cards never get stuck invisible
+  // Slide automation cards in from alternating sides for a more dynamic reveal
   if (automationsGrid.value) {
-    const cards = automationsGrid.value.querySelectorAll(".automation-card");
+    const cards = automationsGrid.value.querySelectorAll<HTMLElement>(".automation-card");
     if (cards.length > 0) {
-      gsap.fromTo(
-        cards,
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "power2.out",
-          clearProps: "opacity,transform",
-          scrollTrigger: {
-            trigger: automationsGrid.value,
-            start: "top 85%",
-            toggleActions: "play none none none",
+      cards.forEach((card, i) => {
+        const fromLeft = i % 2 === 0;
+        gsap.fromTo(
+          card,
+          { x: fromLeft ? -140 : 140, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.9,
+            delay: (i % 3) * 0.1,
+            ease: "power3.out",
+            clearProps: "opacity,transform",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
           },
-        },
-      );
+        );
+      });
     }
   }
 

@@ -321,41 +321,58 @@ const problems = [
   },
 ];
 
-function animateIn(target: any, vars: gsap.TweenVars, scrollTriggerVars?: ScrollTrigger.Vars) {
+function slideIn(target: any, from: gsap.TweenVars, to: gsap.TweenVars, scrollTriggerVars?: ScrollTrigger.Vars) {
   if (!target) return;
   const config: gsap.TweenVars = {
     opacity: 1,
+    x: 0,
     y: 0,
-    ease: "power2.out",
+    ease: "power3.out",
     clearProps: "opacity,transform",
-    ...vars,
+    ...to,
   };
   if (scrollTriggerVars) {
     config.scrollTrigger = { toggleActions: "play none none none", ...scrollTriggerVars };
   }
-  gsap.fromTo(
-    target,
-    { opacity: 0, y: vars.y ?? 40 },
-    config,
-  );
+  gsap.fromTo(target, { opacity: 0, ...from }, config);
+}
+
+function slideInAlternating(els: HTMLCollection | NodeListOf<Element> | undefined, scrollTriggerVars?: ScrollTrigger.Vars) {
+  if (!els) return;
+  Array.from(els).forEach((el, i) => {
+    const fromLeft = i % 2 === 0;
+    gsap.fromTo(
+      el,
+      { opacity: 0, x: fromLeft ? -140 : 140 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.9,
+        delay: i * 0.1,
+        ease: "power3.out",
+        clearProps: "opacity,transform",
+        scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none", ...scrollTriggerVars },
+      },
+    );
+  });
 }
 
 onMounted(() => {
   // Hero animations (no scroll trigger — fire on mount)
-  animateIn(badgeRef.value, { y: 30, duration: 0.8, ease: "power4.out" });
-  animateIn(headline.value, { y: 40, duration: 1, delay: 0.15, ease: "power4.out" });
-  animateIn(subheadline.value, { y: 40, duration: 0.8, delay: 0.3, ease: "power4.out" });
-  animateIn(ctaGroup.value, { y: 40, duration: 0.8, delay: 0.45, ease: "power4.out" });
+  slideIn(badgeRef.value, { y: -30 }, { duration: 0.8, ease: "power4.out" });
+  slideIn(headline.value, { y: 50 }, { duration: 1.1, delay: 0.15, ease: "power4.out" });
+  slideIn(subheadline.value, { y: 40 }, { duration: 0.9, delay: 0.3, ease: "power4.out" });
+  slideIn(ctaGroup.value, { y: 40 }, { duration: 0.9, delay: 0.45, ease: "power4.out" });
 
-  // Stats animations
-  animateIn(statsBadge.value, { y: 30, duration: 0.8 }, { trigger: statsSection.value, start: "top 80%" });
-  animateIn(statsHeadline.value, { y: 40, duration: 1 }, { trigger: statsSection.value, start: "top 75%" });
-  animateIn(statsGrid.value?.children, { y: 60, duration: 0.8, stagger: 0.15 }, { trigger: statsGrid.value, start: "top 80%" });
+  // Stats animations — headers slide down, cards slide in alternating from sides
+  slideIn(statsBadge.value, { y: -30 }, { duration: 0.8 }, { trigger: statsSection.value, start: "top 80%" });
+  slideIn(statsHeadline.value, { y: 50 }, { duration: 1 }, { trigger: statsSection.value, start: "top 75%" });
+  slideInAlternating(statsGrid.value?.children);
 
-  // Problems animations
-  animateIn(probBadge.value, { y: 30, duration: 0.8 }, { trigger: probBadge.value, start: "top 85%" });
-  animateIn(probHeadline.value, { y: 40, duration: 1 }, { trigger: probHeadline.value, start: "top 80%" });
-  animateIn(probGrid.value?.children, { y: 50, duration: 0.8, stagger: 0.12 }, { trigger: probGrid.value, start: "top 80%" });
+  // Problems animations — same pattern
+  slideIn(probBadge.value, { y: -30 }, { duration: 0.8 }, { trigger: probBadge.value, start: "top 85%" });
+  slideIn(probHeadline.value, { y: 50 }, { duration: 1 }, { trigger: probHeadline.value, start: "top 80%" });
+  slideInAlternating(probGrid.value?.children);
 
   // Recalibrate ScrollTrigger after images/fonts settle to prevent triggers from sitting at stale positions
   if (typeof window !== "undefined") {
